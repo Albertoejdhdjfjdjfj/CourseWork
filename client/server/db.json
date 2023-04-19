@@ -1,0 +1,20 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "ivan",
+      "lastName": "ivan",
+      "email": "ivan",
+      "password": "123"
+    },
+    {
+      "name": "artem",
+      "lastName": "mironchik",
+      "email": "tawerka.power@gmail.com",
+      "password": "kichnorim",
+      "id": 2
+    }
+  ],
+  "bag": [],
+  "favorites": []
+}

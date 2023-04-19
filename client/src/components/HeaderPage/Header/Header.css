@@ -1,0 +1,106 @@
+.topSection > header {
+  width: calc(2640 * 100vw / var(--width_before_breakpoint));
+  height: calc(50 * 100vw / var(--width_before_breakpoint));
+  margin-top: calc(40 * 100vw / var(--width_before_breakpoint));
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.topSection > header > div {
+  width: calc(576 * 100vw / var(--width_before_breakpoint));
+  display: flex;
+  justify-content: space-between;
+}
+
+.topSection > header > div > p {
+  color: white;
+}
+
+.menu_burger {
+  display: none;
+}
+
+.package {
+  display: none;
+}
+
+.glass {
+  display: none;
+}
+
+.topSection > header > h1 {
+  font-family: 'Helvetica Neue LT Std';
+  font-size: calc(70 * 100vw / var(--width_before_breakpoint));
+  color: white;
+}
+
+.topSection > .header > div > p {
+  font-size: calc(24 * 100vw / var(--width_before_breakpoint));
+  display: inline;
+  color: white;
+}
+
+.topSection > header > div > img {
+  width: calc(27 * 100vw / var(--width_before_breakpoint));
+  height: calc(24 * 100vw / var(--width_before_breakpoint));
+}
+
+.topSection > header > div > p > img {
+  width: calc(24 * 100vw / var(--width_before_breakpoint));
+  height: calc(24 * 100vw / var(--width_before_breakpoint));
+}
+
+@media screen and (max-width: 850px) {
+  .topSection > header {
+    width: calc(810 * 100vw / var(--width_after_breakpoint));
+    height: calc(32 * 100vw / var(--width_after_breakpoint));
+    margin-top: calc(34 * 100vw / var(--width_after_breakpoint));
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .topSection > header > div {
+    width: calc(176 * 100vw / var(--width_after_breakpoint));
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .menu_burger {
+    display: block;
+    width: calc(44 * 100vw / var(--width_after_breakpoint));
+    height: calc(32 * 100vw / var(--width_after_breakpoint));
+  }
+
+  .package {
+    display: block;
+    width: calc(27 * 100vw / var(--width_after_breakpoint));
+    height: calc(32 * 100vw / var(--width_after_breakpoint));
+  }
+
+  .glass {
+    display: block;
+    width: calc(32 * 100vw / var(--width_after_breakpoint));
+    height: calc(32 * 100vw / var(--width_after_breakpoint));
+  }
+
+  .topSection > header > h1 {
+    font-family: 'Helvetica Neue LT Std';
+    font-size: calc(42 * 100vw / var(--width_after_breakpoint));
+    color: white;
+  }
+
+  .topSection > header > div > p {
+    display: none;
+  }
+
+  .topSection > header > div > img {
+    width: calc(36 * 100vw / var(--width_after_breakpoint));
+    height: calc(32 * 100vw / var(--width_after_breakpoint));
+  }
+
+  .topSection > header > div > p > img {
+    display: none;
+  }
+}

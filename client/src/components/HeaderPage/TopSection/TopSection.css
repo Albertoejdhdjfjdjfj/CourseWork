@@ -1,0 +1,104 @@
+@import url('../../../assets/fonts/fonts.css');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto';
+  font-weight: 400;
+}
+
+:root {
+  --width_before_breakpoint: 2880;
+  --width_after_breakpoint: 850;
+}
+
+.topSection {
+  width: 100%;
+  height: calc(1674 * 100vw / var(--width_before_breakpoint));
+  display: flex;
+  background: url(../../../assets/images/backroundTopSection.jpg);
+  background-size: cover;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.topSection > div {
+  width: calc(2280 * 100vw / var(--width_before_breakpoint));
+  margin-bottom: calc(200 * 100vw / var(--width_before_breakpoint));
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.topSection > div > h2 {
+  font-size: calc(76 * 100vw / var(--width_before_breakpoint));
+  font-weight: 700;
+  color: white;
+}
+
+.topSection > div > p {
+  margin-top: calc(40 * 100vw / var(--width_before_breakpoint));
+  font-size: calc(32 * 100vw / var(--width_before_breakpoint));
+  color: white;
+}
+
+.topSection > div > div {
+  width: calc(480 * 100vw / var(--width_before_breakpoint));
+  height: calc(100 * 100vw / var(--width_before_breakpoint));
+  margin-top: calc(60 * 100vw / var(--width_before_breakpoint));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: calc(32 * 100vw / var(--width_before_breakpoint));
+  color: white;
+  border: 2px solid #ffffff;
+}
+
+@media screen and (max-width: 850px) {
+  .topSection {
+    width: 100%;
+    height: calc(880 * 100vw / var(--width_after_breakpoint));
+  }
+
+  .topSection > div {
+    width: calc(760 * 100vw / var(--width_after_breakpoint));
+    height: calc(386 * 100vw / var(--width_after_breakpoint));
+    position: absolute;
+    z-index: 2;
+    margin-bottom: 0vw;
+    margin-top: calc(960 * 100vw / var(--width_after_breakpoint));
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .topSection > div > h2 {
+    width: calc(381 * 100vw / var(--width_after_breakpoint));
+    text-align: center;
+    font-size: calc(64 * 100vw / var(--width_after_breakpoint));
+    font-weight: 700;
+    color: black;
+  }
+
+  .topSection > div > p {
+    text-align: center;
+    margin-top: calc(40 * 100vw / var(--width_after_breakpoint));
+    font-size: calc(24 * 100vw / var(--width_after_breakpoint));
+    color: black;
+  }
+
+  .topSection > div > div {
+    width: calc(440 * 100vw / var(--width_after_breakpoint));
+    height: calc(80 * 100vw / var(--width_after_breakpoint));
+    margin-top: calc(42 * 100vw / var(--width_after_breakpoint));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: calc(28 * 100vw / var(--width_after_breakpoint));
+    color: black;
+    border: 2px solid black;
+  }
+}

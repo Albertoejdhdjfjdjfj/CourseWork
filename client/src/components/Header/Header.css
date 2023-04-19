@@ -1,0 +1,117 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto';
+  font-weight: 400;
+}
+
+:root {
+  --width_before_breakpoint: 2880;
+  --width_after_breakpoint: 850;
+}
+
+.header {
+  background-color: white;
+  position: fixed;
+  margin-top: 0;
+  width: calc(2640 * 100vw / var(--width_before_breakpoint));
+  height: calc(112 * 100vw / var(--width_before_breakpoint));
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header > div {
+  width: calc(576 * 100vw / var(--width_before_breakpoint));
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu_burger {
+  display: none;
+}
+
+.package {
+  display: none;
+}
+
+.glass {
+  display: none;
+}
+
+h1 {
+  font-family: 'Helvetica Neue LT Std';
+  font-size: calc(70 * 100vw / var(--width_before_breakpoint));
+  color: black;
+}
+
+.header > div > p {
+  font-size: calc(24 * 100vw / var(--width_before_breakpoint));
+  display: inline;
+  color: black;
+}
+
+.header > div > img {
+  width: calc(27 * 100vw / var(--width_before_breakpoint));
+  height: calc(24 * 100vw / var(--width_before_breakpoint));
+}
+
+.header > div > p > img {
+  width: calc(24 * 100vw / var(--width_before_breakpoint));
+  height: calc(24 * 100vw / var(--width_before_breakpoint));
+}
+
+@media screen and (max-width: 850px) {
+  h .header {
+    width: calc(810 * 100vw / var(--width_after_breakpoint));
+    height: calc(100 * 100vw / var(--width_after_breakpoint));
+    margin-top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .header > div {
+    width: calc(176 * 100vw / var(--width_after_breakpoint));
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .menu_burger {
+    display: block;
+    width: calc(44 * 100vw / var(--width_after_breakpoint));
+    height: calc(32 * 100vw / var(--width_after_breakpoint));
+  }
+
+  .package {
+    display: block;
+    width: calc(27 * 100vw / var(--width_after_breakpoint));
+    height: calc(32 * 100vw / var(--width_after_breakpoint));
+  }
+
+  .glass {
+    display: block;
+    width: calc(32 * 100vw / var(--width_after_breakpoint));
+    height: calc(32 * 100vw / var(--width_after_breakpoint));
+  }
+
+  h1 {
+    font-family: 'Helvetica Neue LT Std';
+    font-size: calc(42 * 100vw / var(--width_after_breakpoint));
+    color: black;
+  }
+
+  .header > div > p {
+    display: none;
+  }
+
+  .header > div > img {
+    width: calc(36 * 100vw / var(--width_after_breakpoint));
+    height: calc(32 * 100vw / var(--width_after_breakpoint));
+  }
+
+  .header > div > p > img {
+    display: none;
+  }
+}

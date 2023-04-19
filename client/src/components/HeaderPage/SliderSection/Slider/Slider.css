@@ -1,0 +1,128 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto';
+  font-weight: 400;
+}
+
+:root {
+  --width_before_breakpoint: 2880;
+  --width_after_breakpoint: 850;
+}
+
+.slider {
+  width: calc(2468 * 100vw / var(--width_before_breakpoint));
+  height: calc(888 * 100vw / var(--width_before_breakpoint));
+  margin-top: calc(166 * 100vw / var(--width_before_breakpoint));
+  display: flex;
+}
+
+.slider > img {
+  width: calc(140 * 100vw / var(--width_before_breakpoint));
+  height: calc(140 * 100vw / var(--width_before_breakpoint));
+  margin-left: calc(2398 * 100vw / var(--width_before_breakpoint));
+  margin-top: calc(330 * 100vw / var(--width_before_breakpoint));
+  position: absolute;
+  z-index: 1;
+}
+
+.slider > div {
+  width: calc(2468 * 100vw / var(--width_before_breakpoint));
+  height: calc(888 * 100vw / var(--width_before_breakpoint));
+  overflow: hidden;
+  position: absolute;
+}
+
+.slider > div > div {
+  display: flex;
+  transition: all ease 0.4s;
+}
+
+.slider > div > div > div {
+  width: calc(599 * 100vw / var(--width_before_breakpoint));
+  height: calc(888 * 100vw / var(--width_before_breakpoint));
+  margin-right: calc(24 * 100vw / var(--width_before_breakpoint));
+}
+
+.slider > div > div > div > span {
+  position: absolute;
+  width: calc(61 * 100vw / var(--width_before_breakpoint));
+  height: calc(56 * 100vw / var(--width_before_breakpoint));
+  margin-left: calc(513 * 100vw / var(--width_before_breakpoint));
+  margin-top: calc(24 * 100vw / var(--width_before_breakpoint));
+}
+
+.slider > div > div > div > span > img {
+  width: 100%;
+}
+
+.slider > div > div > div > img {
+  width: calc(599 * 100vw / var(--width_before_breakpoint));
+  height: calc(800 * 100vw / var(--width_before_breakpoint));
+}
+
+.slider > div > div > div > p {
+  margin-top: calc(24 * 100vw / var(--width_before_breakpoint));
+  font-size: calc(40 * 100vw / var(--width_before_breakpoint));
+  font-weight: 700;
+}
+
+@media screen and (max-width: 850px) {
+  .slider {
+    width: calc(745 * 100vw / var(--width_after_breakpoint));
+    height: calc(479 * 100vw / var(--width_after_breakpoint));
+    margin-top: calc(80 * 100vw / var(--width_after_breakpoint));
+    display: flex;
+  }
+
+  .slider > img {
+    width: calc(64 * 100vw / var(--width_after_breakpoint));
+    height: calc(64 * 100vw / var(--width_after_breakpoint));
+    margin-left: calc(715 * 100vw / var(--width_after_breakpoint));
+    margin-top: calc(210 * 100vw / var(--width_after_breakpoint));
+    position: absolute;
+    z-index: 1;
+  }
+
+  .slider > div {
+    width: calc(745 * 100vw / var(--width_after_breakpoint));
+    height: calc(528 * 100vw / var(--width_after_breakpoint));
+    overflow: hidden;
+    position: absolute;
+  }
+
+  .slider > div > div {
+    display: flex;
+    transition: all ease 0.4s;
+  }
+
+  .slider > div > div > div {
+    width: calc(359 * 100vw / var(--width_after_breakpoint));
+    height: calc(528 * 100vw / var(--width_after_breakpoint));
+    margin-right: calc(27 * 100vw / var(--width_after_breakpoint));
+  }
+
+  .slider > div > div > div > span {
+    position: absolute;
+    width: calc(37 * 100vw / var(--width_after_breakpoint));
+    height: calc(33 * 100vw / var(--width_after_breakpoint));
+    margin-left: calc(307 * 100vw / var(--width_after_breakpoint));
+    margin-top: calc(14 * 100vw / var(--width_after_breakpoint));
+  }
+
+  .slider > div > div > div > span > img {
+    width: 100%;
+  }
+
+  .slider > div > div > div > img {
+    width: calc(359 * 100vw / var(--width_after_breakpoint));
+    height: calc(479 * 100vw / var(--width_after_breakpoint));
+  }
+
+  .slider > div > div > div > p {
+    margin-top: calc(2 * 100vw / var(--width_after_breakpoint));
+    font-size: calc(24 * 100vw / var(--width_after_breakpoint));
+    font-weight: 700;
+  }
+}

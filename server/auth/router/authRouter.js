@@ -2,7 +2,6 @@ const Router=require('express')
 const router=new Router()
 const controller=require('../controller/authController')
 const{check}=require("express-validator")
-const authMiddleware=require('../middleware/authMiddleware')
 
 router.post('/registration',[
      check('username','Username can not be empty').notEmpty(),

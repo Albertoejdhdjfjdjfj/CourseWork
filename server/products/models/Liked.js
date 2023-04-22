@@ -1,8 +1,8 @@
 const { Schema, model }=require('mongoose')
 
-const Bag=new Schema({
+const Liked=new Schema({
      userId:{type: String,required:true},
      products:{type: Array,required:true}
 })
 
-module.exports=model('Bag',Bag)
+module.exports=model('Liked',Liked)

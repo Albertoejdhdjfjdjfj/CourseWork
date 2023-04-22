@@ -5,7 +5,8 @@ const jwt =require("jsonwebtoken")
 const {secret}=require("../secret/config")
 
 const generateAccesToken=(id)=>{
-    return jwt.sign({id},secret,{expiresIn:"24h"})
+    const payload={userId:id}
+    return jwt.sign(payload,secret,{expiresIn:"24h"})
 }
 
 class authController{
@@ -15,14 +16,14 @@ class authController{
              if(!errors.isEmpty()){
               return res.status(400).json({message:'Ошибка при регистрации'})
              }
-             const {username,password} =req.body
-             const condidate=await User.findOne({username})
+             const {email,password} =req.body
+             const condidate=await User.findOne({email})
              if(condidate){
               return res.status(400).json({message:'Registration error,Такой пользователь уже существует'})
              }
              const salt = bcrypt.genSaltSync(7); 
              const hashPassword=bcrypt.hashSync(password,salt)
-             const user=new User({username,password: hashPassword})
+             const user=new User({email,password: hashPassword})
              await user.save()
              return res.json({message:"Registration succesfully"})
        }

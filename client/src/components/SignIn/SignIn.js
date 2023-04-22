@@ -1,41 +1,22 @@
 import React, { useState, useEffect } from 'react';
+import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setUserId } from '../../redux/actions/actions';
 import './SignIn.css';
 
 const SignIn = () => {
-  const [email, setEmail] = useState('');
+  const [user, setUser] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const authorization = async () => {
-    let user = await fetch(`http://localhost:3001/users?email=${email}&password=${password}`).then(
-      (response) => response.json()
-    );
+  const authorization=()=>{
 
-    user[0]
-      ? (dispatch(setUserId(user[0].id)),
-        localStorage.setItem('email', email),
-        localStorage.setItem('password', password),
-        navigate('/'))
-      : setError('Invalid email or password');
-  };
-
-  useEffect(() => {
-    fetch(
-      `http://localhost:3001/users?email=${localStorage.getItem(
-        'email'
-      )}&password=${localStorage.getItem('password')}`
-    )
-      .then((response) => response.json())
-      .then((user) => {
-        user[0] ? (dispatch(setUserId(user[0].id)), navigate('/')) : '';
-      });
-  }, []);
+  }
+    
 
   return (
     <div className="sign_in">

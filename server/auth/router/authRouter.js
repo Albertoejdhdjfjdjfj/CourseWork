@@ -4,10 +4,12 @@ const controller=require('../controller/authController')
 const{check}=require("express-validator")
 
 router.post('/registration',[
-     check('email','Username can not be empty').isEmail().withMessage('Invalid email address'),
-     check('password','Password can not be more 4 and less 10 symbols').isLength({min:4,max:10}),
+     check('firstname').isLength({min:3,max:20}),
+     check('lastname').isLength({min:3,max:20}),
+     check('email').isEmail(),
+     check('password').isLength({min:4,max:10}),
 ],controller.registation)
-router.get('/login',controller.login)
+router.post('/login',controller.login)
 
 
 module.exports=router

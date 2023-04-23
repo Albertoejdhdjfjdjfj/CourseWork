@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { host } from '../../../../assets/constans/config';
 import './Slider.css';
 import arrowRight from '../../../../assets/images/arrowRight.svg';
 import heart from '../../../../assets/images/heart.svg';
 
+
 function Slider() {
-  const userId=useSelector(state=>state.user.id)
   const [data, setData] = useState(null);
   const [left, setLeft] = useState(0);
   const after_breakpoint = 850;
@@ -19,7 +20,7 @@ function Slider() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch('https://if-modnikky-api.onrender.com/api/catalog')
+    fetch(host+'products')
       .then((response) => response.json())
       .then((json) => setData(json));
   }, []);
@@ -63,7 +64,7 @@ function Slider() {
         <div>
           <div style={{ marginLeft: `${left}vw` }}>
             {data.map((item) => (
-              <div key={item.id}>
+              <div key={item._id}>
                 <span onClick={() => addToFavorites(item)}>
                   <img src={heart} />
                 </span>

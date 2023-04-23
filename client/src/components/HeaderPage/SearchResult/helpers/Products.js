@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import heart from '../../../../assets/images/heart.svg';
 const Products = ({ products }) => {
   const navigate = useNavigate();
-  const userId=useSelector(state=>state.user.id)
+  const userId = useSelector((state) => state.user.id);
   const addToFavorites = async (product) => {
     await fetch('http://localhost:3001/favorites', {
       headers: {

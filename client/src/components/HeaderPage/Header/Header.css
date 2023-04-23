@@ -1,3 +1,18 @@
+@import url('../../../assets/fonts/fonts.css');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto';
+  font-weight: 400;
+}
+
+:root {
+  --width_before_breakpoint: 2880;
+  --width_after_breakpoint: 850;
+}
+
+
 .topSection > header {
   width: calc(2640 * 100vw / var(--width_before_breakpoint));
   height: calc(50 * 100vw / var(--width_before_breakpoint));
@@ -30,12 +45,11 @@
 }
 
 .topSection > header > h1 {
-  font-family: 'Helvetica Neue LT Std';
   font-size: calc(70 * 100vw / var(--width_before_breakpoint));
   color: white;
 }
 
-.topSection > .header > div > p {
+.topSection > header > div > p {
   font-size: calc(24 * 100vw / var(--width_before_breakpoint));
   display: inline;
   color: white;

@@ -13,7 +13,7 @@
   --width_after_breakpoint: 850;
 }
 
-.sign_in {
+.login {
   width: calc(996 * 100vw / var(--width_before_breakpoint));
   height: calc(900 * 100vw / var(--width_before_breakpoint));
   display: flex;
@@ -26,7 +26,7 @@
   transform: translate(-50%, -50%);
 }
 
-.sign_in > h2 {
+.login > h2 {
   margin-top: calc(80 * 100vw / var(--width_before_breakpoint));
   width: calc(798 * 100vw / var(--width_before_breakpoint));
   display: flex;
@@ -34,12 +34,12 @@
   font-size: calc(32 * 100vw / var(--width_before_breakpoint));
 }
 
-.sign_in > div {
+.login > div {
   margin-top: calc(40 * 100vw / var(--width_before_breakpoint));
   width: calc(798 * 100vw / var(--width_before_breakpoint));
 }
 
-.sign_in > div > input {
+.login > div > input {
   width: 100%;
   padding-bottom: calc(20 * 100vw / var(--width_before_breakpoint));
   margin-top: calc(80 * 100vw / var(--width_before_breakpoint));
@@ -47,18 +47,18 @@
   border-bottom: 1px solid #d8d8d8;
 }
 
-.sign_in > div > p {
+.login > div > p {
   width: 100%;
   margin-top: calc(20 * 100vw / var(--width_before_breakpoint));
   display: flex;
   justify-content: center;
 }
 
-.sign_in > div > input::-webkit-input-placeholder {
+.login > div > input::-webkit-input-placeholder {
   font-size: calc(24 * 100vw / var(--width_before_breakpoint));
 }
 
-.sign_in > button {
+.login > button {
   background-color: black;
   margin-top: calc(80 * 100vw / var(--width_before_breakpoint));
   width: calc(480 * 100vw / var(--width_before_breakpoint));
@@ -68,18 +68,18 @@
   font-size: calc(32 * 100vw / var(--width_before_breakpoint));
 }
 
-.sign_in > span {
+.login > span {
   margin-top: calc(60 * 100vw / var(--width_before_breakpoint));
   width: calc(798 * 100vw / var(--width_before_breakpoint));
 }
 
-.sign_in > span > a {
+.login > span > a {
   font-size: calc(24 * 100vw / var(--width_before_breakpoint));
   color: black;
 }
 
 @media screen and (max-width: 850px) {
-  .sign_in {
+  .login {
     width: calc(846 * 100vw / var(--width_after_breakpoint));
     height: calc(1125 * 100vw / var(--width_after_breakpoint));
     display: flex;
@@ -88,7 +88,7 @@
     background-color: white;
   }
 
-  .sign_in > h2 {
+  .login > h2 {
     margin-top: calc(80 * 100vw / var(--width_after_breakpoint));
     width: calc(726 * 100vw / var(--width_after_breakpoint));
     display: flex;
@@ -96,19 +96,19 @@
     font-size: calc(32 * 100vw / var(--width_after_breakpoint));
   }
 
-  .sign_in > div {
+  .login > div {
     margin-top: calc(56 * 100vw / var(--width_after_breakpoint));
     width: calc(726 * 100vw / var(--width_after_breakpoint));
   }
 
-  .sign_in > div > p {
+  .login > div > p {
     width: 100%;
     margin-top: calc(20 * 100vw / var(--width_before_breakpoint));
     display: flex;
     justify-content: center;
   }
 
-  .sign_in > div > input {
+  .login > div > input {
     width: 100%;
     padding-bottom: calc(20 * 100vw / var(--width_after_breakpoint));
     margin-top: calc(60 * 100vw / var(--width_after_breakpoint));
@@ -116,11 +116,11 @@
     border-bottom: 1px solid #d8d8d8;
   }
 
-  .sign_in > div > input::-webkit-input-placeholder {
+  .login > div > input::-webkit-input-placeholder {
     font-size: calc(24 * 100vw / var(--width_after_breakpoint));
   }
 
-  .sign_in > button {
+  .login > button {
     background-color: black;
     margin-top: calc(24 * 100vw / var(--width_after_breakpoint));
     width: calc(440 * 100vw / var(--width_after_breakpoint));
@@ -130,12 +130,12 @@
     font-size: calc(28 * 100vw / var(--width_after_breakpoint));
   }
 
-  .sign_in > span {
+  .login > span {
     margin-top: calc(60 * 100vw / var(--width_after_breakpoint));
     width: calc(798 * 100vw / var(--width_after_breakpoint));
   }
 
-  .sign_in > span > a {
+  .login > span > a {
     font-size: calc(24 * 100vw / var(--width_after_breakpoint));
     color: black;
   }

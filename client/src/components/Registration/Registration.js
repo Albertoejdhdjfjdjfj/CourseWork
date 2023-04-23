@@ -1,44 +1,41 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './SignUp.css';
+import './Registration.css';
+import { host } from '../../assets/constans/config';
 import remove_icon from '../../assets/images/remove-icon.svg';
 
-const SignUp = () => {
-  const [name, setName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const Registration = () => {
+  const [name, setName] = useState('albert');
+  const [lastName, setLastName] = useState('albert');
+  const [email, setEmail] = useState('bairamukov.albert2003@gmail.com');
+  const [password, setPassword] = useState('1234');
   const [error, setError] = useState('');
 
   const navigate = useNavigate();
 
   const registration = async () => {
-    let user = await fetch(`http://localhost:3001/users?email=${email}`).then((response) =>
-      response.json()
-    );
+    const req = await fetch(host+'auth/registration', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8'
+      },
+      body: JSON.stringify({
+        firstname: name,
+        lastname: lastName,
+        email: email,
+        password: password
+      })
+    });
 
-    if (!user[0]) {
-      await fetch('http://localhost:3001/users', {
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json'
-        },
-        method: 'POST',
-        body: JSON.stringify({
-          name: name,
-          lastName: lastName,
-          email: email,
-          password: password
-        })
-      });
-      navigate('/signIn');
-    } else {
-      setError('An account with this email already exists');
+    if(req.status==400){
+       return req.json().then(data=>setError(data.message))
     }
+
+    return navigate('/signIn')
   };
 
   return (
-    <div className="sign_up">
+    <div className="registration">
       <h2>
         CREATE ACCOUNT <img src={remove_icon} />
       </h2>
@@ -91,10 +88,10 @@ const SignUp = () => {
       </div>
       <button onClick={registration}>SIGN UP</button>
       <span>
-        <a onClick={() => navigate('/signIn')}>I HAVE AN ACCOUNT</a>
+        <a onClick={() => navigate('/login')}>I HAVE AN ACCOUNT</a>
       </span>
     </div>
   );
 };
 
-export default SignUp;
+export default Registration;

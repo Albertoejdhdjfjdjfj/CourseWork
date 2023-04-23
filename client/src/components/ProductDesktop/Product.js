@@ -1,8 +1,8 @@
 import React, { useState, useEffect, memo } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
+import Header from '../general/Header/Header';
+import Footer from '../general/Footer/Footer';
 import heart from '../../assets/images/heart.svg';
 import plus from '../../assets/images/plus.svg';
 import minus from '../../assets/images/minus.svg';

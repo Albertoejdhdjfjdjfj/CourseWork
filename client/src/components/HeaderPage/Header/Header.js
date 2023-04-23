@@ -2,7 +2,6 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { setSearchDisplay } from '../../../redux/actions/actions';
 import { useNavigate } from 'react-router-dom';
-import { setUserId } from '../../../redux/actions/actions';
 import './Header.css';
 import glass from '../../../assets/images/glass.svg';
 import heart from '../../../assets/images/heart.svg';

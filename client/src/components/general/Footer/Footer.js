@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import './Footer.css';
-import facebook from '../../assets/images/facebok-logo.svg';
-import odnoklassniki from '../../assets/images/odnoklassniki.svg';
-import instagram from '../../assets/images/instagram-logo.svg';
-import plus from '../../assets/images/plus.svg';
-import minus from '../../assets/images/minus.svg';
+import facebook from '../../../assets/images/facebok-logo.svg';
+import odnoklassniki from '../../../assets/images/odnoklassniki.svg';
+import instagram from '../../../assets/images/instagram-logo.svg';
+import plus from '../../../assets/images/plus.svg';
+import minus from '../../../assets/images/minus.svg';
 
 const Footer = () => {
   const [service, setService] = useState(window.innerWidth <= 850 ? false : true);

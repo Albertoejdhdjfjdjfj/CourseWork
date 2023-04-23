@@ -12,18 +12,20 @@ const generateAccesToken=(id)=>{
 class authController{
      async registation(req,res){
        try{
+             console.log(req.body)
              const errors=validationResult(req)
              if(!errors.isEmpty()){
               return res.status(400).json({message:'Ошибка при регистрации'})
              }
-             const {email,password} =req.body
+             const {firstname,lastname,email,password} =req.body
+             console.log(firstname,lastname,email,password)
              const condidate=await User.findOne({email})
              if(condidate){
               return res.status(400).json({message:'Registration error,Такой пользователь уже существует'})
              }
              const salt = bcrypt.genSaltSync(7); 
              const hashPassword=bcrypt.hashSync(password,salt)
-             const user=new User({email,password: hashPassword})
+             const user=new User({firstname,lastname,email,password: hashPassword})
              await user.save()
              return res.json({message:"Registration succesfully"})
        }
@@ -35,8 +37,8 @@ class authController{
 
      async login(req,res){
        try{
-        const {username,password} =req.body
-        const user =await User.findOne({username})
+        const {email,password} =req.body
+        const user =await User.findOne({email})
         if(!user){
          return res.status(400).json({message:'Такой пользователь не найден'})
         }
@@ -46,7 +48,7 @@ class authController{
          }
         
         const token=generateAccesToken(user._id);
-        return res.json({token:token})
+        return res.json({token:token,firstname:user.firstname,lastname:user.lastname})
        }  
        catch(e){
         console.log(e)

@@ -12,8 +12,8 @@ const composeEnhancers = 'object' && window['__REDUX_DEVTOOLS_EXTENSION_COMPOSE_
 const sagaMiddleware = createSagaMiddleware();
 const enhancer = composeEnhancers(applyMiddleware(sagaMiddleware));
 const store = createStore(reducer, enhancer);
- 
-sagaMiddleware.run(rootSaga); 
+
+sagaMiddleware.run(rootSaga);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

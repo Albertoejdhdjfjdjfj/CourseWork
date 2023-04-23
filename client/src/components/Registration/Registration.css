@@ -13,7 +13,7 @@
   --width_after_breakpoint: 850;
 }
 
-.sign_up {
+.registration {
   width: calc(996 * 100vw / var(--width_before_breakpoint));
   height: calc(1125 * 100vw / var(--width_before_breakpoint));
   display: flex;
@@ -26,7 +26,7 @@
   transform: translate(-50%, -50%);
 }
 
-.sign_up > h2 {
+.registration > h2 {
   margin-top: calc(80 * 100vw / var(--width_before_breakpoint));
   width: calc(798 * 100vw / var(--width_before_breakpoint));
   display: flex;
@@ -34,17 +34,17 @@
   font-size: calc(32 * 100vw / var(--width_before_breakpoint));
 }
 
-.sign_up > h2 > img {
+.registration > h2 > img {
   width: calc(32 * 100vw / var(--width_before_breakpoint));
   height: calc(32 * 100vw / var(--width_before_breakpoint));
 }
 
-.sign_up > div {
+.registration > div {
   margin-top: calc(40 * 100vw / var(--width_before_breakpoint));
   width: calc(798 * 100vw / var(--width_before_breakpoint));
 }
 
-.sign_up > div > input {
+.registration > div > input {
   width: 100%;
   padding-bottom: calc(20 * 100vw / var(--width_before_breakpoint));
   margin-top: calc(60 * 100vw / var(--width_before_breakpoint));
@@ -52,18 +52,18 @@
   border-bottom: 1px solid #d8d8d8;
 }
 
-.sign_up > div > p {
+.registration > div > p {
   font-size: calc(24 * 100vw / var(--width_before_breakpoint));
   margin-top: calc(60 * 100vw / var(--width_before_breakpoint));
   display: flex;
   justify-content: center;
 }
 
-.sign_up > div > input::-webkit-input-placeholder {
+.registration > div > input::-webkit-input-placeholder {
   font-size: calc(24 * 100vw / var(--width_before_breakpoint));
 }
 
-.sign_up > button {
+.registration > button {
   background-color: black;
   margin-top: calc(24 * 100vw / var(--width_before_breakpoint));
   width: calc(480 * 100vw / var(--width_before_breakpoint));
@@ -73,12 +73,12 @@
   font-size: calc(32 * 100vw / var(--width_before_breakpoint));
 }
 
-.sign_up > span {
+.registration > span {
   margin-top: calc(60 * 100vw / var(--width_before_breakpoint));
   width: calc(798 * 100vw / var(--width_before_breakpoint));
 }
 
-.sign_up > span > a {
+.registration > span > a {
   font-size: calc(24 * 100vw / var(--width_before_breakpoint));
   color: black;
 }
@@ -118,7 +118,7 @@
 }
 
 @media screen and (max-width: 850px) {
-  .sign_up {
+  .registration {
     width: calc(846 * 100vw / var(--width_after_breakpoint));
     height: calc(1125 * 100vw / var(--width_after_breakpoint));
     display: flex;
@@ -127,7 +127,7 @@
     background-color: white;
   }
 
-  .sign_up > h2 {
+  .registration > h2 {
     margin-top: calc(80 * 100vw / var(--width_after_breakpoint));
     width: calc(726 * 100vw / var(--width_after_breakpoint));
     display: flex;
@@ -135,12 +135,12 @@
     font-size: calc(32 * 100vw / var(--width_after_breakpoint));
   }
 
-  .sign_up > div {
+  .registration > div {
     margin-top: calc(56 * 100vw / var(--width_after_breakpoint));
     width: calc(726 * 100vw / var(--width_after_breakpoint));
   }
 
-  .sign_up > div > input {
+  .registration > div > input {
     width: 100%;
     padding-bottom: calc(20 * 100vw / var(--width_after_breakpoint));
     margin-top: calc(60 * 100vw / var(--width_after_breakpoint));
@@ -148,18 +148,18 @@
     border-bottom: 1px solid #d8d8d8;
   }
 
-  .sign_up > div > p {
+  .registration > div > p {
     font-size: calc(24 * 100vw / var(--width_after_breakpoint));
     margin-top: calc(60 * 100vw / var(--width_after_breakpoint));
     display: flex;
     justify-content: center;
   }
 
-  .sign_up > div > input::-webkit-input-placeholder {
+  .registration > div > input::-webkit-input-placeholder {
     font-size: calc(24 * 100vw / var(--width_after_breakpoint));
   }
 
-  .sign_up > button {
+  .registration > button {
     background-color: black;
     margin-top: calc(24 * 100vw / var(--width_after_breakpoint));
     width: calc(440 * 100vw / var(--width_after_breakpoint));
@@ -169,12 +169,12 @@
     font-size: calc(28 * 100vw / var(--width_after_breakpoint));
   }
 
-  .sign_up > span {
+  .registration > span {
     margin-top: calc(60 * 100vw / var(--width_after_breakpoint));
     width: calc(798 * 100vw / var(--width_after_breakpoint));
   }
 
-  .sign_up > span > a {
+  .registration > span > a {
     font-size: calc(24 * 100vw / var(--width_after_breakpoint));
     color: black;
   }

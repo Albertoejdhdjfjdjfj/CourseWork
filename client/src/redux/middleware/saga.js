@@ -1,24 +1,32 @@
 import { takeEvery, call, put, all } from 'redux-saga/effects';
-import { FETCH_PRODUCTS } from '../actions/actionsTypes';
-import { requestProducts, requestProductsError, requestProductsSuccess } from '../actions/actions';
+import { FETCH_LIKED } from '../actions/actionsTypes';
+import { requestLiked, requestLikedError, requestLikedSuccess } from '../actions/actions';
+import { host } from '../../assets/constans/config';
 
 export function* rootSaga() {
   yield all([watchRequestProducts()]);
 }
 
-export function* watchRequestProducts() {
-  yield takeEvery(FETCH_PRODUCTS, fetchProductsData);
+function* watchRequestProducts() {
+  yield takeEvery(FETCH_LIKED, fetchLikedData);
 }
 
-export function* fetchProductsData() {
+function* fetchLikedData(action) {
   try {
-    yield put(requestProducts());
+    yield put(requestLiked());
     const data = yield call(() => {
-      return fetch(`https://if-modnikky-api.onrender.com/api/catalog`).then((res) => res.json());
+      return fetch(host+`products/liked`,
+      {
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+          'Authorization': `Bearer ${action.payload}`
+        }
+      }
+      ).then((res) => res.json());
     });
-
-    yield put(requestProductsSuccess(data));
+     console.log(data)
+    yield put(requestLikedSuccess(data));
   } catch (error) {
-    yield put(requestProductsError());
+    yield put(requestLikedError());
   }
 }

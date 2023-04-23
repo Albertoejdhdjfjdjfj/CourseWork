@@ -1,8 +1,11 @@
 export const SET_SHOP_CATEGORY = 'SET_SHOP_CATEGORY';
-export const FETCH_PRODUCTS = 'FETCH_PRODUCTS';
-export const REQUEST_PRODUCTS = 'REQUEST_PRODUCTS';
-export const REQUEST_PRODUCTS_SUCCESS = 'REQUEST_PRODUCTS_SUCCESS';
-export const REQUEST_PRODUCTS_ERROR = 'REQUEST_PRODUCTS_ERROR';
 export const SET_SEARCH_TEXT = 'SET_SEARCH_TEXT';
 export const SET_SEARCH_DISPLAY = 'SET_SEARCH_DISPLAY';
-export const SET_USER_ID = 'SET_USER_ID';
+
+//-----------------------------------------------------------
+
+export const ADD_LIKED = 'ADD_LIKED';
+export const FETCH_LIKED = 'FETCH_LIKED';
+export const REQUEST_LIKED = 'REQUEST_LIKED';
+export const REQUEST_LIKED_SUCCESS = 'REQUEST_LIKED_SUCCESS';
+export const REQUEST_LIKED_ERROR = 'REQUEST_LIKED_ERROR';

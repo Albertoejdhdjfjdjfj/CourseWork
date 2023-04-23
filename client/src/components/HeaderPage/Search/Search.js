@@ -18,7 +18,12 @@ const Search = () => {
     <div>
       <div className="search">
         <div>
-          <img onClick={() => {dispatch(setSearchDisplay()), dispatch(setSearchText(''))}} src={cross} />
+          <img
+            onClick={() => {
+              dispatch(setSearchDisplay()), dispatch(setSearchText(''));
+            }}
+            src={cross}
+          />
           <div>
             <input
               type="text"

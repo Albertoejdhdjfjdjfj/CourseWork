@@ -36,7 +36,7 @@ const Header = () => {
         </p>
         <p
           onClick={() => {
-            navigate('/cart');
+            navigate('/bag');
           }}
         >
           BAG
@@ -51,14 +51,14 @@ const Header = () => {
         <img
           src={pack}
           onClick={() => {
-            navigate('/cart');
+            navigate('/bag');
           }}
           className="package"
         />
         <img
           src={heart}
           onClick={() => {
-            navigate('/favorites');
+            navigate('/liked');
           }}
         />
       </div>

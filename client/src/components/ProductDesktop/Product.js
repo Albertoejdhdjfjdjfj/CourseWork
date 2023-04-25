@@ -1,6 +1,7 @@
 import React, { useState, useEffect, memo } from 'react';
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { addLiked ,addBag } from '../../redux/actions/actions';
 import Header from '../general/Header/Header';
 import Footer from '../general/Footer/Footer';
 import heart from '../../assets/images/heart.svg';
@@ -15,42 +16,16 @@ const Product = memo(() => {
   const [shippAndReturnActive, setShippAndReturnActive] = useState(false);
   const [fabricComposActive, setFabricComposActive] = useState(false);
 
-  const products = useSelector((state) => state.headerPage.products);
-  const userId = useSelector((state) => state.user.id);
-
-  const addToBag = async () => {
-    await fetch('http://localhost:3001/bag', {
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      method: 'POST',
-      body: JSON.stringify({
-        userId: userId,
-        product: product
-      })
-    });
-  };
-
-  const addToFavorites = async () => {
-    await fetch('http://localhost:3001/favorites', {
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      method: 'POST',
-      body: JSON.stringify({
-        userId: userId,
-        product: product
-      })
-    });
-  };
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    if (Array.isArray(products)) {
-      setProduct(products.filter((item) => item.id === id)[0]);
-    }
-  }, [products]);
+    const fetchProduct = async () => {
+      await fetch(`http://localhost:5000/products/id?id=${id}`)
+        .then((res) => res.json())
+        .then((data) => setProduct(data));
+    };
+    fetchProduct();
+  }, []);
 
   return (
     product && (
@@ -84,8 +59,8 @@ const Product = memo(() => {
               </div>
 
               <button>
-                <p onClick={addToBag}>ADD TO BAG</p>
-                <div onClick={addToFavorites}>
+                <p onClick={() => dispatch(addBag(product))}>ADD TO BAG</p>
+                <div onClick={() => dispatch(addLiked(product))}>
                   <img src={heart} />
                 </div>
               </button>

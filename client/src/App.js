@@ -9,14 +9,14 @@ import Product from './components/ProductDesktop/Product';
 import Bag from './components/Bag/Bag';
 import Liked from './components/Liked/Liked';
 
-function App() { 
-  return (
+function App() {
+  return ( 
     <div>
       <Routes>
-        <Route path="/" element={<HeaderPage/>}/>
+        <Route path="/" element={<HeaderPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/registration" element={<Registration />} />
-        <Route path="/product/:id" element={ <Product/>} />
+        <Route path="/product/:id" element={<Product />} />
         <Route path="/bag" element={<Bag />} />
         <Route path="/liked" element={<Liked />} />
       </Routes>

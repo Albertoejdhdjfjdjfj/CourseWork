@@ -12,7 +12,6 @@
   --width_after_breakpoint: 850;
 }
 
-
 .topSection > header {
   width: calc(2640 * 100vw / var(--width_before_breakpoint));
   height: calc(50 * 100vw / var(--width_before_breakpoint));

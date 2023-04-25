@@ -6,7 +6,9 @@ const controller=require('../controller/productsController')
 router.get('/',controller.getAllProducts)
 router.post('/bag',controller.setBag)
 router.get('/bag',controller.getBag)
+router.get('/bag',controller.deleteBag)
 router.post('/liked',controller.setLiked)
+router.post('/liked/delete',controller.deleteLiked)
 router.get('/liked',controller.getLiked)
-
-module.exports=router 
+router.get('/id',controller.getProductById)
+module.exports=router  

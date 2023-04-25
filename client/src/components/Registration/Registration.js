@@ -14,7 +14,7 @@ const Registration = () => {
   const navigate = useNavigate();
 
   const registration = async () => {
-    const req = await fetch(host+'auth/registration', {
+    const req = await fetch(host + 'auth/registration', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8'
@@ -27,11 +27,11 @@ const Registration = () => {
       })
     });
 
-    if(req.status==400){
-       return req.json().then(data=>setError(data.message))
+    if (req.status == 400) {
+      return req.json().then((data) => setError(data.message));
     }
 
-    return navigate('/signIn')
+    return navigate('/signIn');
   };
 
   return (

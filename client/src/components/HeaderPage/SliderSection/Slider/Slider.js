@@ -6,7 +6,6 @@ import './Slider.css';
 import arrowRight from '../../../../assets/images/arrowRight.svg';
 import heart from '../../../../assets/images/heart.svg';
 
-
 function Slider() {
   const [data, setData] = useState(null);
   const [left, setLeft] = useState(0);
@@ -20,7 +19,7 @@ function Slider() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(host+'products')
+    fetch(host + 'products')
       .then((response) => response.json())
       .then((json) => setData(json));
   }, []);
@@ -68,7 +67,7 @@ function Slider() {
                 <span onClick={() => addToFavorites(item)}>
                   <img src={heart} />
                 </span>
-                <img src={item.images[0]} onClick={() => navigate(`/product/${item.id}`)} />
+                <img src={item.images[0]} onClick={() => navigate(`/product/${item._id}`)} />
                 <p>${item.price.value}</p>
               </div>
             ))}

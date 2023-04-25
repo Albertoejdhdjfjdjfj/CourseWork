@@ -15,7 +15,7 @@ const Categories = () => {
 
   const handleChangeStateBtns = (categoryName) => {
     if (category === categoryName) {
-      dispatch(setShopCategory(''));
+      dispatch(setShopCategory(undefined));
     } else {
       dispatch(setShopCategory(categoryName));
     }

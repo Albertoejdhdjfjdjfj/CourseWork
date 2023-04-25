@@ -14,7 +14,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const login = async () => {
-    const req = await fetch(host+'auth/login', {
+    const req = await fetch(host + 'auth/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8'
@@ -25,13 +25,13 @@ const Login = () => {
       })
     });
 
-    if(req.status==400){
-       return req.json().then(data=>setError(data.message))
+    if (req.status == 400) {
+      return req.json().then((data) => setError(data.message));
     }
 
-    const res=await req.json()
-    Cookies.set('modnikky_token',res.token)
-    return navigate('/')
+    const res = await req.json();
+    Cookies.set('modnikky_token', res.token);
+    return navigate('/');
   };
 
   return (

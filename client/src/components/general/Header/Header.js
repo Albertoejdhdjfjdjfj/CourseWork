@@ -28,19 +28,22 @@ const Header = () => {
           onClick={() => {
             dispatch(setSearchDisplay());
             navigate('/');
-          }}>
+          }}
+        >
           <img src={glass_black} /> SEARCH
         </p>
         <p
           onClick={() => {
             localStorage.clear(), dispatch(setUserId(false));
-          }}>
+          }}
+        >
           SIGN OUT
         </p>
         <p
           onClick={() => {
-            navigate('/cart');
-          }}>
+            navigate('/bag');
+          }}
+        >
           BAG
         </p>
         <img
@@ -54,14 +57,14 @@ const Header = () => {
         <img
           src={pack_black}
           onClick={() => {
-            navigate('/cart');
+            navigate('/bag');
           }}
           className="package"
         />
         <img
           src={heart_black}
           onClick={() => {
-            dispatch(navigate('/favorites'));
+            dispatch(navigate('/liked'));
           }}
         />
       </div>

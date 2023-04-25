@@ -1,9 +1,9 @@
 import React, { useState, useEffect, memo } from 'react';
 import { useParams } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { addLiked ,addBag } from '../../redux/actions/actions';
+import Cookies from 'js-cookie';
 import Header from '../general/Header/Header';
 import Footer from '../general/Footer/Footer';
+import { host } from '../../assets/constans/config';
 import heart from '../../assets/images/heart.svg';
 import plus from '../../assets/images/plus.svg';
 import minus from '../../assets/images/minus.svg';
@@ -16,16 +16,37 @@ const Product = memo(() => {
   const [shippAndReturnActive, setShippAndReturnActive] = useState(false);
   const [fabricComposActive, setFabricComposActive] = useState(false);
 
-  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchProduct = async () => {
-      await fetch(`http://localhost:5000/products/id?id=${id}`)
+      await fetch(host+`products/id?id=${id}`)
         .then((res) => res.json())
         .then((data) => setProduct(data));
     };
     fetchProduct();
   }, []);
+
+  const addBag=async(item)=>{
+    await fetch(host+'products/bag', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${Cookies.get('modnikky_token')}`
+      },
+      body: JSON.stringify(item)
+    })
+  }
+
+  const addLiked=async(item)=>{
+    await fetch(host+'products/liked', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${Cookies.get('modnikky_token')}`
+      },
+      body: JSON.stringify(item)
+    })
+  }
 
   return (
     product && (
@@ -59,8 +80,8 @@ const Product = memo(() => {
               </div>
 
               <button>
-                <p onClick={() => dispatch(addBag(product))}>ADD TO BAG</p>
-                <div onClick={() => dispatch(addLiked(product))}>
+                <p onClick={() => addBag(product)}>ADD TO BAG</p>
+                <div onClick={() =>addLiked(product)}>
                   <img src={heart} />
                 </div>
               </button>

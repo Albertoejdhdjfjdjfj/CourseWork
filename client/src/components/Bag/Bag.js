@@ -1,56 +1,77 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector,useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie'
 import Header from '../general/Header/Header';
 import Footer from '../general/Footer/Footer';
+import { host } from '../../assets/constans/config';
 import remove_icon from '../../assets/images/remove-icon.svg';
 import maestro_logo from '../../assets/images/maestro-logo.svg';
 import visa_logo from '../../assets/images/visa-logo.svg';
 import './Bag.css';
 
-const ShoppingCart = () => {
+const Bag = () => {
+  const [data,setData]=useState(false)
+  const navigate=useNavigate()
 
-  const dispatch=useDispatch()
-
-  const sendProducts = async () => {
-    await fetch('https://if-modnikky-api.onrender.com/api/cart', {
-      method: 'POST',
+  const fetchProduct = async() => {
+    const req = await fetch(host + 'products/bag', {
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json;charset=utf-8',
+        Authorization: `Bearer ${Cookies.get('modnikky_token')}`
       },
-      body: JSON.stringify({
-        products: data.map((item) => item.product.id)
-      })
-    })
-      .then((res) => res.json())
-      .then((json) => console.log(json));
+    });
+
+    if (req.status == 400) {
+      navigate('/login')
+    }
+
+    const res = await req.json();
+    return setData(res);
   };
 
-  const fetchProduct = () => {
-    fetch(`http://localhost:3001/bag?userId=${userId}`)
-      .then((res) => res.json())
-      .then((json) => setData(json));
-  };
+  const deleteProduct = async (id) => {
+    const req= await fetch(host+'products/bag/delete', {
+       method: 'POST',
+       headers: {
+         'Content-Type': 'application/json',
+         Authorization: `Bearer ${Cookies.get('modnikky_token')}`
+       },
+       body: JSON.stringify({
+          id: id
+       })
+     })
+ 
+     if (req.status == 400) {
+      return navigate('/bag')
+     }
+ 
+     return fetchProduct()
+   }; 
+
+  useEffect(()=>{
+     fetchProduct()
+  },[]
+)
 
   return (
-      <div className="shoppingCard">
+      data&&<div className="bag">
         <Header />
         <p>BAG {data.length}</p>
-        <div>
-          {data.map((item) => (
-            <div key={item._id}>
+        <div className="products">
+          {data.map((item,index) => (
+            <div key={index}>
               <div>
-                <img src={item.images[0]} />
+                <img src={item.product.images[0]} />
                 <div>
-                  <p>{item.name}</p>
-                  <span>USD {item.price.value}</span>
+                  <p>{item.product.name}</p>
+                  <span>USD {item.product.price.value}</span>
                   <div>
-                    <p>COLOR: {item.color.name}</p>
-                    <p>SIZE: {item.availableSizes[0]}</p>
-                    <p>QUANTITY: {1}</p>
+                    <p>COLOR: {item.product.color.name}</p>
+                    <p>SIZE: {item.product.availableSizes[0]}</p>
                   </div>
                 </div>
               </div>
-              <span onClick={() => dispatch(removeBag(item._id))}>
+              <span onClick={()=>deleteProduct(item._id)}>
                 <img src={remove_icon} /> <p>REMOVE</p>
               </span>
               <hr />
@@ -61,7 +82,7 @@ const ShoppingCart = () => {
           <p>
             USD{' '}
             {data.reduce(function (sum, elem) {
-              return sum + Number(elem.price.value);
+              return sum + Number(elem.product.price.value);
             }, 0)}
           </p>
           <button
@@ -81,4 +102,4 @@ const ShoppingCart = () => {
   );
 };
 
-export default ShoppingCart;
+export default Bag;

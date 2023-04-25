@@ -130,7 +130,7 @@
     border: none;
   }
 
-  .footerSection > div > div > a {
+  .footerSection > div > div > p {
     font-size: calc(24 * 100vw / var(--width_after_breakpoint));
   }
 

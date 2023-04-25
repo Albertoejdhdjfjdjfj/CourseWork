@@ -72,10 +72,10 @@ class productsController{
         }
         const userId = jwt.verify(token,secret.secret).userId;
         const data = await Bag.find({userId: userId})
-        if(data.length===0){
-          return res.status(200).json([]);
-         }
-         return res.status(200).json(data.map((item)=>{item.userId=""; return item}));
+         const result = data.map((item) => {
+          return { ...item.toObject(), userId: undefined };
+        });
+        return res.status(200).json(result);
       } catch (e) {
         console.log(e);
         res.status(400).json({ message: 'Пользователь не авторизован' });
@@ -124,11 +124,10 @@ class productsController{
         }
         const userId = jwt.verify(token,secret.secret).userId;
         const data = await Liked.find({userId: userId})
-        if(data.length===0){
-          return res.status(200).json([]);
-         }
-    
-         return res.status(200).json(data.map((item)=>{item.userId=""; return item}))
+         const result = data.map((item) => {
+          return { ...item.toObject(), userId: undefined };
+        });
+        return res.status(200).json(result);
       } catch (e) {
         console.log(e);
         res.status(400).json({ message: 'Пользователь не авторизован' });

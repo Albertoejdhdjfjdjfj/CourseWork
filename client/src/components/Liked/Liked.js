@@ -1,46 +1,63 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
 import Header from '../general/Header/Header';
 import Footer from '../general/Footer/Footer';
+import { host } from '../../assets/constans/config';
 import './Liked.css';
 import remove_icon from '../../assets/images/remove-icon.svg';
 
-const Favorites = () => {
-  const [data, setData] = useState(false);
-  const userId = useSelector((state) => state.user.id);
+const Liked = () => {
+  const [data,setData]=useState(false)
+  const navigate=useNavigate()
 
-  const fetchProduct = () => {
-    fetch(`http://localhost:3001/favorites?userId=${userId}`)
-      .then((res) => res.json())
-      .then((json) => setData(json));
+  const fetchProduct = async() => {
+    const req = await fetch(host + 'products/liked', {
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        Authorization: `Bearer ${Cookies.get('modnikky_token')}`
+      },
+    });
+
+    if (req.status == 400) {
+      navigate('/login')
+    }
+
+    const res = await req.json();
+    return setData(res);
   };
 
   const deleteProduct = async (id) => {
-    await fetch(`http://localhost:3001/favorites/${id}`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
+    const req= await fetch(host+'products/liked/delete', {
+       method: 'POST',
+       headers: {
+         'Content-Type': 'application/json',
+         Authorization: `Bearer ${Cookies.get('modnikky_token')}`
+       },
+       body: JSON.stringify({
+          id: id
+       })
+     })
+ 
+     if (req.status == 400) {
+      return navigate('/bag')
+     }
+ 
+     return fetchProduct()
+   }; 
 
-    fetchProduct();
-  };
-
-  useEffect(() => {
-    fetch(`http://localhost:3001/favorites?userId=${userId}`)
-      .then((res) => res.json())
-      .then((json) => setData(json));
-  }, []);
+  useEffect(()=>{
+     fetchProduct()
+  },[]
+)
 
   return (
-    data !== 'loading' &&
-    data && (
-      <div className="favorites">
+      data&&<div className="liked">
         <Header />
         <p>BAG {data.length}</p>
-        <div>
-          {data.map((item) => (
-            <div key={item.id}>
+        <div className="products">
+          {data.map((item,index) => (
+            <div key={index}>
               <div>
                 <img src={item.product.images[0]} />
                 <div>
@@ -49,11 +66,10 @@ const Favorites = () => {
                   <div>
                     <p>COLOR: {item.product.color.name}</p>
                     <p>SIZE: {item.product.availableSizes[0]}</p>
-                    <p>QUANTITY: {1}</p>
                   </div>
                 </div>
               </div>
-              <span onClick={() => deleteProduct(item.id)}>
+              <span onClick={()=>deleteProduct(item._id)}>
                 <img src={remove_icon} /> <p>REMOVE</p>
               </span>
               <hr />
@@ -62,8 +78,7 @@ const Favorites = () => {
         </div>
         <Footer />
       </div>
-    )
   );
 };
 
-export default Favorites;
+export default Liked;

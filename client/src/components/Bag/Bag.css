@@ -13,19 +13,19 @@
   --width_after_breakpoint: 850;
 }
 
-.shoppingCard {
+.bag {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.shoppingCard > p {
+.bag > p {
   margin-top: calc(56 * 100vw / var(--width_before_breakpoint));
   width: calc(1056 * 100vw / var(--width_before_breakpoint));
   text-align: start;
 }
 
-.shoppingCard > span {
+.bag > span {
   margin-top: calc(80 * 100vw / var(--width_before_breakpoint));
   width: 100%;
   display: flex;
@@ -33,11 +33,11 @@
   align-items: center;
 }
 
-.shoppingCard > span > p {
+.bag > span > p {
   font-size: calc(48 * 100vw / var(--width_before_breakpoint));
 }
 
-.shoppingCard > span > button {
+.bag > span > button {
   margin-top: calc(48 * 100vw / var(--width_before_breakpoint));
   width: calc(480 * 100vw / var(--width_before_breakpoint));
   height: calc(100 * 100vw / var(--width_before_breakpoint));
@@ -47,7 +47,7 @@
   border: none;
 }
 
-.shoppingCard > span > div {
+.bag > span > div {
   margin-top: calc(40 * 100vw / var(--width_before_breakpoint));
   width: calc(170 * 100vw / var(--width_before_breakpoint));
   height: calc(48 * 100vw / var(--width_before_breakpoint));
@@ -55,12 +55,12 @@
   justify-content: space-between;
 }
 
-.shoppingCard > span > div > img {
+.bag > span > div > img {
   width: calc(80 * 100vw / var(--width_before_breakpoint));
   height: calc(48 * 100vw / var(--width_before_breakpoint));
 }
 
-.shoppingCard > div > div {
+.products  > div {
   margin-top: calc(60 * 100vw / var(--width_before_breakpoint));
   width: calc(1056 * 100vw / var(--width_before_breakpoint));
   height: calc(635 * 100vw / var(--width_before_breakpoint));
@@ -69,42 +69,42 @@
   align-items: center;
 }
 
-.shoppingCard > div > div > hr {
+.products  > div > hr {
   margin-top: calc(63 * 100vw / var(--width_before_breakpoint));
   width: 100%;
 }
 
-.shoppingCard > div > div > span {
+.products  > div > span {
   margin-top: calc(86 * 100vw / var(--width_before_breakpoint));
   width: 100%;
   display: flex;
   justify-content: flex-end;
 }
 
-.shoppingCard > div > div > span > img {
+.products  > div > span > img {
   width: calc(24 * 100vw / var(--width_before_breakpoint));
   height: calc(24 * 100vw / var(--width_before_breakpoint));
   margin-right: calc(14 * 100vw / var(--width_before_breakpoint));
 }
 
-.shoppingCard > div > div > span > p {
+.products  > div > span > p {
   display: inline;
   font-size: calc(24 * 100vw / var(--width_before_breakpoint));
 }
 
-.shoppingCard > div > div > div {
+.products > div > div {
   width: 100%;
   height: calc(460 * 100vw / var(--width_before_breakpoint));
   display: flex;
   justify-content: flex-start;
 }
 
-.shoppingCard > div > div > div > img {
+.products > div > div > img {
   width: calc(320 * 100vw / var(--width_before_breakpoint));
   height: calc(460 * 100vw / var(--width_before_breakpoint));
 }
 
-.shoppingCard > div > div > div > div {
+.products  > div > div > div {
   height: calc(460 * 100vw / var(--width_before_breakpoint));
   margin-left: calc(40 * 100vw / var(--width_before_breakpoint));
   display: flex;
@@ -112,42 +112,42 @@
   align-items: flex-start;
 }
 
-.shoppingCard > div > div > div > div > p {
+.products  > div > div > div > p {
   margin-top: calc(20 * 100vw / var(--width_before_breakpoint));
   display: inline;
   font-size: calc(32 * 100vw / var(--width_before_breakpoint));
 }
 
-.shoppingCard > div > div > div > div > span {
+.products  > div > div > div > span {
   margin-top: calc(20 * 100vw / var(--width_before_breakpoint));
   display: inline;
   font-size: calc(24 * 100vw / var(--width_before_breakpoint));
 }
 
-.shoppingCard > div > div > div > div > div {
+.products  > div > div > div > div {
   margin-top: calc(23 * 100vw / var(--width_before_breakpoint));
 }
 
-.shoppingCard > div > div > div > div > div > p {
+.products > div > div > div > div > p {
   margin-top: calc(37 * 100vw / var(--width_before_breakpoint));
   text-transform: uppercase;
   font-size: calc(24 * 100vw / var(--width_before_breakpoint));
 }
 
 @media screen and (max-width: 850px) {
-  .shoppingCard {
+  .bag {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
-  .shoppingCard > p {
+  .bag > p {
     margin-top: calc(60 * 100vw / var(--width_after_breakpoint));
     width: calc(810 * 100vw / var(--width_after_breakpoint));
     text-align: start;
   }
 
-  .shoppingCard > span {
+  .bag > span {
     margin-top: calc(77 * 100vw / var(--width_after_breakpoint));
     width: 100%;
     display: flex;
@@ -155,11 +155,11 @@
     align-items: center;
   }
 
-  .shoppingCard > span > p {
+  .bag > span > p {
     font-size: calc(32 * 100vw / var(--width_after_breakpoint));
   }
 
-  .shoppingCard > span > button {
+  .bag > span > button {
     margin-top: calc(60 * 100vw / var(--width_after_breakpoint));
     width: calc(440 * 100vw / var(--width_after_breakpoint));
     height: calc(80 * 100vw / var(--width_after_breakpoint));
@@ -169,7 +169,7 @@
     border: none;
   }
 
-  .shoppingCard > span > div {
+  .bag > span > div {
     margin-top: calc(58 * 100vw / var(--width_after_breakpoint));
     width: calc(170 * 100vw / var(--width_after_breakpoint));
     height: calc(48 * 100vw / var(--width_after_breakpoint));
@@ -177,12 +177,12 @@
     justify-content: space-between;
   }
 
-  .shoppingCard > span > div > img {
+  .bag > span > div > img {
     width: calc(80 * 100vw / var(--width_after_breakpoint));
     height: calc(48 * 100vw / var(--width_after_breakpoint));
   }
 
-  .shoppingCard > div > div {
+  .products  > div {
     margin-top: calc(60 * 100vw / var(--width_after_breakpoint));
     width: calc(810 * 100vw / var(--width_after_breakpoint));
     height: calc(635 * 100vw / var(--width_after_breakpoint));
@@ -191,42 +191,42 @@
     align-items: center;
   }
 
-  .shoppingCard > div > div > hr {
+  .products  > div > hr {
     margin-top: calc(63 * 100vw / var(--width_after_breakpoint));
     width: 100%;
   }
 
-  .shoppingCard > div > div > span {
+  .products  > div > span {
     margin-top: calc(86 * 100vw / var(--width_after_breakpoint));
     width: 100%;
     display: flex;
     justify-content: flex-end;
   }
 
-  .shoppingCard > div > div > span > img {
+  .products  > div > span > img {
     width: calc(24 * 100vw / var(--width_after_breakpoint));
     height: calc(24 * 100vw / var(--width_after_breakpoint));
     margin-right: calc(14 * 100vw / var(--width_after_breakpoint));
   }
 
-  .shoppingCard > div > div > span > p {
+  .products  > div > span > p {
     display: inline;
     font-size: calc(24 * 100vw / var(--width_after_breakpoint));
   }
 
-  .shoppingCard > div > div > div {
+  .products  > div > div {
     width: 100%;
     height: calc(460 * 100vw / var(--width_after_breakpoint));
     display: flex;
     justify-content: flex-start;
   }
 
-  .shoppingCard > div > div > div > img {
+  .products > div > div > img {
     width: calc(320 * 100vw / var(--width_after_breakpoint));
     height: calc(460 * 100vw / var(--width_after_breakpoint));
   }
 
-  .shoppingCard > div > div > div > div {
+  .products  > div > div > div {
     height: calc(460 * 100vw / var(--width_after_breakpoint));
     margin-left: calc(20 * 100vw / var(--width_after_breakpoint));
     display: flex;
@@ -234,23 +234,23 @@
     align-items: flex-start;
   }
 
-  .shoppingCard > div > div > div > div > p {
+  .products  > div > div > div > p {
     margin-top: calc(20 * 100vw / var(--width_after_breakpoint));
     display: inline;
     font-size: calc(32 * 100vw / var(--width_after_breakpoint));
   }
 
-  .shoppingCard > div > div > div > div > span {
+  .products  > div > div > div > span {
     margin-top: calc(20 * 100vw / var(--width_after_breakpoint));
     display: inline;
     font-size: calc(24 * 100vw / var(--width_after_breakpoint));
   }
 
-  .shoppingCard > div > div > div > div > div {
+  .products  > div > div > div > div {
     margin-top: calc(23 * 100vw / var(--width_after_breakpoint));
   }
 
-  .shoppingCard > div > div > div > div > div > p {
+  .products  > div > div > div > div > p {
     margin-top: calc(37 * 100vw / var(--width_after_breakpoint));
     text-transform: uppercase;
     font-size: calc(24 * 100vw / var(--width_after_breakpoint));

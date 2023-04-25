@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setSearchDisplay } from '../../../redux/actions/actions';
+import Cookies from 'js-cookie';
 import glass_black from '../../../assets/images/glass-black.svg';
 import heart_black from '../../../assets/images/heart-black.svg';
 import burger_black from '../../../assets/images/hamburger-menu-black.svg';
@@ -34,7 +35,7 @@ const Header = () => {
         </p>
         <p
           onClick={() => {
-            localStorage.clear(), dispatch(setUserId(false));
+            Cookies.remove('modnikky_token');navigate('/')
           }}
         >
           SIGN OUT
@@ -64,7 +65,7 @@ const Header = () => {
         <img
           src={heart_black}
           onClick={() => {
-            dispatch(navigate('/liked'));
+            navigate('/liked');
           }}
         />
       </div>

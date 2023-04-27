@@ -58,7 +58,7 @@ const Liked = () => {
         <div className="products">
           {data.map((item,index) => (
             <div key={index}>
-              <div>
+              <div onClick={()=>navigate(`/product/${item.product._id}`)}>
                 <img src={item.product.images[0]} />
                 <div>
                   <p>{item.product.name}</p>

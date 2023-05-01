@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { host } from '../../../assets/constans/config';
 import './Footer.css';
 import facebook from '../../../assets/images/facebok-logo.svg';
 import odnoklassniki from '../../../assets/images/odnoklassniki.svg';
@@ -15,7 +16,7 @@ const Footer = () => {
   const [message, setMessage] = useState(false);
 
   const followToNews = async () => {
-    const message = await fetch('https://if-modnikky-api.onrender.com/api/subscription', {
+    const message = await fetch(host + 'subscribe', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -24,12 +25,8 @@ const Footer = () => {
         email: email
       })
     });
-    console.log(message.status);
 
-    if (message.status < 400) {
-      message = message.json();
-      setMessage(message);
-    }
+    return setMessage(await message.json());
   };
 
   return (

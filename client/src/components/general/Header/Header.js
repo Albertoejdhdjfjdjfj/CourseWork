@@ -35,10 +35,12 @@ const Header = () => {
         </p>
         <p
           onClick={() => {
-            Cookies.remove('modnikky_token');navigate('/')
+            Cookies.get('modnikky_token')
+              ? (Cookies.remove('modnikky_token'), navigate('/'))
+              : navigate('/login');
           }}
         >
-          SIGN OUT
+          {Cookies.get('modnikky_token') ? 'LOG OUT':'LOG IN'}
         </p>
         <p
           onClick={() => {

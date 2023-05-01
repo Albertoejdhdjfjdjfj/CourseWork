@@ -9,9 +9,22 @@ const Registration = () => {
   const [lastName, setLastName] = useState('albert');
   const [email, setEmail] = useState('bairamukov.albert2003@gmail.com');
   const [password, setPassword] = useState('1234');
+  const [subscribe, setSubscribe] = useState(false);
   const [error, setError] = useState('');
 
   const navigate = useNavigate();
+
+  const subscribeToNews = async () => {
+    await fetch(host + 'subscribe', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: email
+      })
+    });
+  };
 
   const registration = async () => {
     const req = await fetch(host + 'auth/registration', {
@@ -29,9 +42,13 @@ const Registration = () => {
 
     if (req.status == 400) {
       return req.json().then((data) => setError(data.message));
+    } else {
+      if (subscribe) {
+        subscribeToNews();
+      }
     }
 
-    return navigate('/signIn');
+    return navigate('/login');
   };
 
   return (
@@ -75,7 +92,7 @@ const Registration = () => {
       </div>
       <div className="conventions">
         <div>
-          <input type="checkbox" />
+          <input type="checkbox" onChange={() => setSubscribe(!subscribe)} />
           <label>
             Let's get personal! We'll send you only the good stuff: Exclusive early access to Sale,
             new arrivals and promotions.

@@ -12,16 +12,14 @@ const generateAccesToken=(id)=>{
 class authController{
      async registation(req,res){
        try{
-             console.log(req.body)
              const errors=validationResult(req)
              if(!errors.isEmpty()){
               return res.status(400).json({message:'Ошибка при регистрации'})
              }
              const {firstname,lastname,email,password} =req.body
-             console.log(firstname,lastname,email,password)
              const condidate=await User.findOne({email})
              if(condidate){
-              return res.status(400).json({message:'Registration error,Такой пользователь уже существует'})
+              return res.status(400).json({message:'Такой пользователь уже существует'})
              }
              const salt = bcrypt.genSaltSync(7); 
              const hashPassword=bcrypt.hashSync(password,salt)

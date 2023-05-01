@@ -1,3 +1,3 @@
 module.exports={
-     email:"bairamukov.albert2003@gmail.com"
+     email:"modnikky_shop@mail.ru"
 }

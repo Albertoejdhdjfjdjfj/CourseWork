@@ -1,4 +1,5 @@
 import React from 'react';
+import {useNavigate} from 'react-router-dom'
 import { useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { host } from '../../../assets/constans/config';
@@ -10,7 +11,7 @@ const SearchResult = () => {
   const [data, setData] = useState(false);
   const [nextArr, setNextArr] = useState(false);
   const search = useSelector((state) => state.headerPage.search);
-
+  const navigate=useNavigate()
   const fetchCategory = async (sort, limit) => {
     const nextarr = await fetch(
       host + `products?sort=${sort}&page=${page + 1}&limit=${limit}`
@@ -35,7 +36,8 @@ const SearchResult = () => {
   }, [search]);
 
   return (
-    search && data && (
+    search &&
+    data && (
       <div className="search_result">
         <div>
           {data.map((item) => (

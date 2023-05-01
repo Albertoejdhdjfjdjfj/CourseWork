@@ -11,7 +11,7 @@ const Category = () => {
   const [data, setData] = useState(false);
   const [nextArr, setNextArr] = useState(false);
   const category = useSelector((state) => state.headerPage.category);
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   const fetchCategory = async (sort, limit) => {
     const nextarr = await fetch(
@@ -37,7 +37,8 @@ const Category = () => {
   }, [category]);
 
   return (
-    category && data && (
+    category &&
+    data && (
       <div className="category">
         <h3>{category}</h3>
 

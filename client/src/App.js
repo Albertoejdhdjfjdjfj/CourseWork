@@ -10,7 +10,7 @@ import Bag from './components/Bag/Bag';
 import Liked from './components/Liked/Liked';
 
 function App() {
-  return ( 
+  return (
     <div>
       <Routes>
         <Route path="/" element={<HeaderPage />} />

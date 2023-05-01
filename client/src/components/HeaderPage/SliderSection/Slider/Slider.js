@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector,useDispatch } from 'react-redux';
+import { addLiked } from '../../../../redux/actions/actions';
 import { host } from '../../../../assets/constans/config';
+import Cookies from 'js-cookie';
 import './Slider.css';
 import arrowRight from '../../../../assets/images/arrowRight.svg';
 import heart from '../../../../assets/images/heart.svg';
@@ -17,6 +19,7 @@ function Slider() {
   const left_cell_after_breakpoint = (27 * 100) / after_breakpoint;
 
   const navigate = useNavigate();
+  const dispatch=useDispatch();
 
   useEffect(() => {
     fetch(host + 'products')
@@ -24,20 +27,7 @@ function Slider() {
       .then((json) => setData(json));
   }, []);
 
-  const addToFavorites = async (product) => {
-    await fetch('http://localhost:3001/favorites', {
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      method: 'POST',
-      body: JSON.stringify({
-        userId: userId,
-        product: product
-      })
-    });
-  };
-
+ 
   const slide = () => {
     if (window.innerWidth >= after_breakpoint) {
       if (
@@ -64,8 +54,8 @@ function Slider() {
           <div style={{ marginLeft: `${left}vw` }}>
             {data.map((item) => (
               <div key={item._id}>
-                <span onClick={() => addToFavorites(item)}>
-                  <img src={heart} />
+                <span onClick={() => dispatch(addLiked({id:item._id,token:Cookies.get('modnikky_token')}))}>
+                  <img src={heart}/>
                 </span>
                 <img src={item.images[0]} onClick={() => navigate(`/product/${item._id}`)} />
                 <p>${item.price.value}</p>

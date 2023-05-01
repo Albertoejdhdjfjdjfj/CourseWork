@@ -16,37 +16,40 @@ const Product = memo(() => {
   const [shippAndReturnActive, setShippAndReturnActive] = useState(false);
   const [fabricComposActive, setFabricComposActive] = useState(false);
 
-
   useEffect(() => {
     const fetchProduct = async () => {
-      await fetch(host+`products/id?id=${id}`)
+      await fetch(host + `products/id?id=${id}`)
         .then((res) => res.json())
         .then((data) => setProduct(data));
     };
     fetchProduct();
   }, []);
 
-  const addBag=async(item)=>{
-    await fetch(host+'products/bag', {
+  const addBag = async (id) => {
+    await fetch(host + 'products/bag', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${Cookies.get('modnikky_token')}`
       },
-      body: JSON.stringify(item)
-    })
-  }
+      body: JSON.stringify({
+        id:id
+      })
+    });
+  };
 
-  const addLiked=async(item)=>{
-    await fetch(host+'products/liked', {
+  const addLiked = async (id) => {
+    await fetch(host + 'products/liked', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${Cookies.get('modnikky_token')}`
       },
-      body: JSON.stringify(item)
-    })
-  }
+      body: JSON.stringify({
+        id:id
+      })
+    });
+  };
 
   return (
     product && (
@@ -80,9 +83,9 @@ const Product = memo(() => {
               </div>
 
               <button>
-                <p onClick={() => addBag(product)}>ADD TO BAG</p>
-                <div onClick={() =>addLiked(product)}>
-                  <img src={heart} />
+                <p onClick={() => addBag(product._id)}>ADD TO BAG</p>
+                <div onClick={() => addLiked(product._id)}>
+                  <img src={heart} /> 
                 </div>
               </button>
             </div>

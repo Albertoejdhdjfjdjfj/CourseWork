@@ -3,12 +3,8 @@ import { FETCH_LIKED, DELETE_LIKED, ADD_LIKED , FETCH_BAG, DELETE_BAG, ADD_BAG }
 import {
   removeLiked,
   pushLiked,
-  requestLiked,
   requestLikedSuccess,
   requestLikedError,
-  removeBag,
-  pushBag,
-  requestBag,
   requestBagSuccess,
   requestBagError
 } from '../actions/actions';
@@ -44,7 +40,6 @@ function* watchAddBag() {
 
 function* fetchLikedData(action) {
   try {
-    // yield put(requestLiked());
     const data = yield fetch(host + `products/liked`, {
       headers: {
         'Content-Type': 'application/json;charset=utf-8',

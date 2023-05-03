@@ -73,11 +73,9 @@ class productsController{
         const userId = jwt.verify(token,secret.secret).userId;
         const bag = await Bag.find({userId: userId})
         const bagIds=bag.map(item=>{return item.productId})
-        console.log(bagIds) 
         const data = await Promise.all(bagIds.map(async (item) => 
           await Product.findOne({ _id: item })
         ));
-        console.log(data) 
         return res.status(200).json(data);
       } catch (e) {
         console.log(e);

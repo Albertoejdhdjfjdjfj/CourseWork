@@ -40,11 +40,6 @@ export default function reducer(state = initialState, action) {
 
     //======================================================================================
 
-    case REQUEST_LIKED:
-      return {
-        ...state,
-        products: { ...state.products, liked: [] }
-      };
     case REQUEST_LIKED_SUCCESS:
       return {
         ...state,
@@ -71,11 +66,6 @@ export default function reducer(state = initialState, action) {
 
     //================================================================================
 
-    case REQUEST_BAG:
-      return {
-        ...state,
-        products: { ...state.products, bag: [] }
-      };
     case REQUEST_BAG_SUCCESS:
       return {
         ...state,

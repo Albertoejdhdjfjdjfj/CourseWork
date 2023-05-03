@@ -40,7 +40,7 @@ const Header = () => {
               : navigate('/login');
           }}
         >
-          {Cookies.get('modnikky_token') ? 'LOG OUT':'LOG IN'}
+          {Cookies.get('modnikky_token') ? 'LOG OUT' : 'LOG IN'}
         </p>
         <p
           onClick={() => {

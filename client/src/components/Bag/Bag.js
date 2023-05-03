@@ -1,56 +1,30 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { fetchBag,deleteBag } from '../../redux/actions/actions';
 import { useNavigate } from 'react-router-dom';
+import { useSelector,useDispatch } from 'react-redux';
 import Cookies from 'js-cookie';
 import Header from '../general/Header/Header';
 import Footer from '../general/Footer/Footer';
-import { host } from '../../assets/constans/config';
 import remove_icon from '../../assets/images/remove-icon.svg';
 import maestro_logo from '../../assets/images/maestro-logo.svg';
 import visa_logo from '../../assets/images/visa-logo.svg';
 import './Bag.css';
 
 const Bag = () => {
-  const [data, setData] = useState(false);
+  const data = useSelector((state) => state.products.bag);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const fetchProduct = async () => {
-    const req = await fetch(host + 'products/bag', {
-      headers: {
-        'Content-Type': 'application/json;charset=utf-8',
-        Authorization: `Bearer ${Cookies.get('modnikky_token')}`
-      }
-    });
-
-    if (req.status == 400) {
-      navigate('/login');
-    }
-
-    const res = await req.json();
-    return setData(res);
-  };
-
-  const deleteProduct = async (id) => {
-    const req = await fetch(host + 'products/bag/delete', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${Cookies.get('modnikky_token')}`
-      },
-      body: JSON.stringify({
-        id: id
-      })
-    });
-
-    if (req.status == 400) {
-      return navigate('/bag');
-    }
-
-    return fetchProduct();
-  };
 
   useEffect(() => {
-    fetchProduct();
+    dispatch(fetchBag(Cookies.get('modnikky_token')));
   }, []);
+
+  useEffect(() => {
+    if (!data) {
+      navigate('/login');
+    }
+  }, [data]);
 
   return (
     data && (
@@ -71,7 +45,9 @@ const Bag = () => {
                   </div>
                 </div>
               </div>
-              <span onClick={() => deleteProduct(item._id)}>
+              <span onClick={() => {
+                dispatch(deleteBag({ product: item, token: Cookies.get('modnikky_token') }));
+              }}>
                 <img src={remove_icon} /> <p>REMOVE</p>
               </span>
               <hr />

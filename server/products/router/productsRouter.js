@@ -10,5 +10,5 @@ router.post('/bag/delete',controller.deleteBag)
 router.post('/liked',controller.addLiked)
 router.post('/liked/delete',controller.deleteLiked)
 router.get('/liked',controller.getLiked)
-router.get('/id',controller.getProductById)
+router.get('/id',controller.getProductById) 
 module.exports=router  

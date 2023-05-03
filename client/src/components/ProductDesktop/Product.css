@@ -137,35 +137,35 @@
   height: calc(32 * 100vw / var(--width_before_breakpoint));
 }
 
-.descrition {
+.description {
   width: 100%;
   margin-top: calc(20 * 100vw / var(--width_before_breakpoint));
 }
 
-.descrition > div {
+.description > div {
   margin-top: calc(60 * 100vw / var(--width_before_breakpoint));
   width: calc(433 * 100vw / var(--width_before_breakpoint));
   display: flex;
   flex-direction: column;
 }
 
-.descrition > div > p {
+.description > div > p {
   margin-left: calc(47 * 100vw / var(--width_before_breakpoint));
   font-size: calc(24 * 100vw / var(--width_before_breakpoint));
   color: #8c8c8c;
 }
 
-.descrition > div > div {
+.description > div > div {
   display: flex;
   align-items: center;
 }
 
-.descrition > div > div > img {
+.description > div > div > img {
   width: calc(14 * 100vw / var(--width_before_breakpoint));
   height: calc(14 * 100vw / var(--width_before_breakpoint));
 }
 
-.descrition > div > div > p {
+.description > div > div > p {
   margin-left: calc(33 * 100vw / var(--width_before_breakpoint));
   font-size: calc(24 * 100vw / var(--width_before_breakpoint));
 }
@@ -301,35 +301,35 @@
     height: calc(24 * 100vw / var(--width_after_breakpoint));
   }
 
-  .descrition {
+  .description {
     width: 100%;
     margin-top: calc(30 * 100vw / var(--width_after_breakpoint));
   }
 
-  .descrition > div {
+  .description > div {
     margin-top: calc(50 * 100vw / var(--width_after_breakpoint));
     width: calc(321 * 100vw / var(--width_after_breakpoint));
     display: flex;
     flex-direction: column;
   }
 
-  .descrition > div > p {
+  .description > div > p {
     margin-left: calc(46 * 100vw / var(--width_after_breakpoint));
     font-size: calc(24 * 100vw / var(--width_after_breakpoint));
     color: #8c8c8c;
   }
 
-  .descrition > div > div {
+  .description > div > div {
     display: flex;
     align-items: center;
   }
 
-  .descrition > div > div > img {
+  .description > div > div > img {
     width: calc(16 * 100vw / var(--width_after_breakpoint));
     height: calc(16 * 100vw / var(--width_after_breakpoint));
   }
 
-  .descrition > div > div > p {
+  .description > div > div > p {
     margin-left: calc(30 * 100vw / var(--width_after_breakpoint));
     font-size: calc(24 * 100vw / var(--width_after_breakpoint));
   }

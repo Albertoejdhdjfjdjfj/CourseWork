@@ -6,7 +6,7 @@ const secret=require('../../auth/secret/config')
 
 class productsController{
     async getAllProducts(req, res) {
-        try {
+        try {  
           const { sort,page,limit } = req.query;
           const pageNumber = parseInt(page) || 1;
           const limitNumber = parseInt(limit);
@@ -57,7 +57,7 @@ class productsController{
         const userId = jwt.verify(token,secret.secret).userId;
         const newBag = new Bag({ userId: userId, productId: id });
         await newBag.save();
-        return res.status(200).json({message:"bag is added"});
+        return res.status(200).json();
       } catch (e) {
         console.log(e);
         res.status(400).json({ message: 'Пользователь не авторизован' });
@@ -73,14 +73,16 @@ class productsController{
         const userId = jwt.verify(token,secret.secret).userId;
         const bag = await Bag.find({userId: userId})
         const bagIds=bag.map(item=>{return item.productId})
-        const data = await Product.find({
-          _id: { $in: bagIds }  
-        });
+        console.log(bagIds) 
+        const data = await Promise.all(bagIds.map(async (item) => 
+          await Product.findOne({ _id: item })
+        ));
+        console.log(data) 
         return res.status(200).json(data);
       } catch (e) {
         console.log(e);
         res.status(400).json({ message: 'Пользователь не авторизован' });
-      } 
+      }  
      } 
 
      async deleteBag(req,res){
@@ -92,9 +94,9 @@ class productsController{
         }
         const userId = jwt.verify(token,secret.secret).userId;
         await Bag.deleteOne({productId: id ,userId: userId})
-         return res.status(200).json({message:"bag is del"})
+         return res.status(200).json()
       } catch (e) {
-        console.log(e); 
+        console.log(e);  
         res.status(400).json({ message: 'Пользователь не авторизован' });
       } 
      } 
@@ -131,10 +133,11 @@ class productsController{
         const like = await Liked.find({ userId: userId,productId : id })
 
         if(like.length===0){
-        const newLike = new Liked({ userId: userId, productId: id }); 
+        const newLike = new Liked({ userId: userId, productId: id });  
         await newLike.save();
         }
-         return res.status(200).json({message:"like is added"}); 
+      
+         return res.status(200).json(); 
       } catch (e) {
         console.log(e);
         res.status(400).json({ message: 'Пользователь не авторизован' });
@@ -150,10 +153,10 @@ class productsController{
         }
         const userId = jwt.verify(token,secret.secret).userId;
         await Liked.deleteOne({productId: id ,userId: userId})
-         return res.status(200).json({message:"like is del"}) 
+         return res.status(200).json()
       } catch (e) {
         console.log(e); 
-        res.status(400).json({ message: 'Пользователь не авторизован' });
+        res.status(400).json({ message: 'Пользователь не авторизован' }); 
       } 
      } 
 }

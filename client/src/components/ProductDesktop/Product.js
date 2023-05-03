@@ -1,13 +1,17 @@
 import React, { useState, useEffect, memo } from 'react';
 import { useParams } from 'react-router-dom';
+import { useSelector,useDispatch } from 'react-redux';
+import { addBag, addLiked, deleteLiked } from '../../redux/actions/actions';
 import Cookies from 'js-cookie';
 import Header from '../general/Header/Header';
 import Footer from '../general/Footer/Footer';
 import { host } from '../../assets/constans/config';
+import likeHeart from '../../assets/images/like-heart.svg';
 import heart from '../../assets/images/heart.svg';
 import plus from '../../assets/images/plus.svg';
 import minus from '../../assets/images/minus.svg';
 import './Product.css';
+
 
 const Product = memo(() => {
   const [product, setProduct] = useState(false);
@@ -15,6 +19,9 @@ const Product = memo(() => {
   const [descActive, setDescActive] = useState(false);
   const [shippAndReturnActive, setShippAndReturnActive] = useState(false);
   const [fabricComposActive, setFabricComposActive] = useState(false);
+
+  const dispatch=useDispatch()
+  const likedData = useSelector((state) => state.products.liked);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -25,31 +32,6 @@ const Product = memo(() => {
     fetchProduct();
   }, []);
 
-  const addBag = async (id) => {
-    await fetch(host + 'products/bag', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${Cookies.get('modnikky_token')}`
-      },
-      body: JSON.stringify({
-        id:id
-      })
-    });
-  };
-
-  const addLiked = async (id) => {
-    await fetch(host + 'products/liked', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${Cookies.get('modnikky_token')}`
-      },
-      body: JSON.stringify({
-        id:id
-      })
-    });
-  };
 
   return (
     product && (
@@ -83,14 +65,18 @@ const Product = memo(() => {
               </div>
 
               <button>
-                <p onClick={() => addBag(product._id)}>ADD TO BAG</p>
-                <div onClick={() => addLiked(product._id)}>
-                  <img src={heart} /> 
+                <p onClick={() => dispatch(addBag({ product: product, token: Cookies.get('modnikky_token') }))}>ADD TO BAG</p>
+                <div onClick={() => likedData && likedData.some((el) => el._id === product._id)
+                      ? dispatch(
+                          deleteLiked({ product: product, token: Cookies.get('modnikky_token') })
+                        )
+                      : dispatch(addLiked({ product: product, token: Cookies.get('modnikky_token') }))}>
+                  <img src={likedData && likedData.some((el) => el._id === product._id) ? likeHeart : heart} />
                 </div>
               </button>
             </div>
 
-            <div className="descrition">
+            <div className="description">
               <div>
                 <div onClick={() => setDescActive(!descActive)}>
                   <img src={descActive ? minus : plus} /> <p>PRODUCT DESCRIPTION</p>

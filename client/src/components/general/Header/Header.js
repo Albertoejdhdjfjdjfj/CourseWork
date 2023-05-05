@@ -22,7 +22,13 @@ const Header = () => {
         <p>COLLECTIONS</p>
       </div>
 
-      <h1>MODNIKKY</h1>
+      <h1
+        onClick={() => {
+          navigate('/');
+        }}
+      >
+        MODNIKKY
+      </h1>
 
       <div>
         <p

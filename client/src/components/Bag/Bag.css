@@ -20,7 +20,8 @@
 }
 
 .bag > p {
-  margin-top: calc(56 * 100vw / var(--width_before_breakpoint));
+  font-size: calc(40 * 100vw / var(--width_before_breakpoint));
+  margin-top: calc(124 * 100vw / var(--width_before_breakpoint));
   width: calc(1056 * 100vw / var(--width_before_breakpoint));
   text-align: start;
 }
@@ -70,7 +71,6 @@
 }
 
 .products > div > hr {
-  margin-top: calc(63 * 100vw / var(--width_before_breakpoint));
   width: 100%;
 }
 
@@ -93,6 +93,7 @@
 }
 
 .products > div > div {
+  margin-top: calc(63 * 100vw / var(--width_before_breakpoint));
   width: 100%;
   height: calc(460 * 100vw / var(--width_before_breakpoint));
   display: flex;
@@ -142,6 +143,7 @@
   }
 
   .bag > p {
+    font-size: calc(40 * 100vw / var(--width_after_breakpoint));
     margin-top: calc(60 * 100vw / var(--width_after_breakpoint));
     width: calc(810 * 100vw / var(--width_after_breakpoint));
     text-align: start;
@@ -192,7 +194,6 @@
   }
 
   .products > div > hr {
-    margin-top: calc(63 * 100vw / var(--width_after_breakpoint));
     width: 100%;
   }
 
@@ -215,6 +216,7 @@
   }
 
   .products > div > div {
+    margin-top: calc(63 * 100vw / var(--width_after_breakpoint));
     width: 100%;
     height: calc(460 * 100vw / var(--width_after_breakpoint));
     display: flex;

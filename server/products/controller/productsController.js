@@ -49,13 +49,13 @@ class productsController{
      async addBag(req,res){
       try {
         const token = req.headers.authorization.split(' ')[1];
-        const {id} = req.body;
+        const {id,size} = req.body;
 
         if (!token) {
           return res.status(403).json({ message: 'Пользователь не авторизован' });
         }
         const userId = jwt.verify(token,secret.secret).userId;
-        const newBag = new Bag({ userId: userId, productId: id });
+        const newBag = new Bag({ userId: userId, productId: id, size:size });
         await newBag.save();
         return res.status(200).json();
       } catch (e) {
@@ -68,13 +68,15 @@ class productsController{
       try {
         const token = req.headers.authorization.split(' ')[1];
         if (!token) {
-          return res.status(403).json({ message: 'Пользователь не авторизован' });
+          return res.status(403).json({ message: 'Пользователь не авторизован' }); 
         }
         const userId = jwt.verify(token,secret.secret).userId;
         const bag = await Bag.find({userId: userId})
-        const bagIds=bag.map(item=>{return item.productId})
-        const data = await Promise.all(bagIds.map(async (item) => 
-          await Product.findOne({ _id: item })
+        const data = await Promise.all(bag.map(async (item) => {
+          const element = await Product.findOne({ _id: item.productId }) 
+          element.size=item.size
+          return element
+        }
         ));
         return res.status(200).json(data);
       } catch (e) {
@@ -99,7 +101,7 @@ class productsController{
       } 
      } 
      
-
+ 
      async getLiked(req,res){
       try {   
         const token = req.headers.authorization.split(' ')[1];
@@ -123,7 +125,7 @@ class productsController{
       try {
         const token = req.headers.authorization.split(' ')[1];
         const {id} = req.body;
-      
+       
         if (!token) {
           return res.status(403).json({ message: 'Пользователь не авторизован' });
         }

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import { fetchBag,deleteBag } from '../../redux/actions/actions';
+import { fetchBag, deleteBag } from '../../redux/actions/actions';
 import { useNavigate } from 'react-router-dom';
-import { useSelector,useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Cookies from 'js-cookie';
 import Header from '../general/Header/Header';
 import Footer from '../general/Footer/Footer';
@@ -15,7 +15,6 @@ const Bag = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-
   useEffect(() => {
     dispatch(fetchBag(Cookies.get('modnikky_token')));
   }, []);
@@ -27,13 +26,13 @@ const Bag = () => {
   }, [data]);
 
   return (
-    data && (
       <div className="bag">
         <Header />
-        <p>BAG {data.length}</p>
+        <p>BAG {data&&data.length}</p>
         <div className="products">
-          {data.map((item, index) => (
+          {data&&data.map((item, index) => (
             <div key={index}>
+              <hr/>
               <div onClick={() => navigate(`/product/${item._id}`)}>
                 <img src={item.images[0]} />
                 <div>
@@ -41,33 +40,28 @@ const Bag = () => {
                   <span>USD {item.price.value}</span>
                   <div>
                     <p>COLOR: {item.color.name}</p>
-                    <p>SIZE: {item.availableSizes[0]}</p>
+                    <p>SIZE: {item.size}</p>
                   </div>
                 </div>
               </div>
-              <span onClick={() => {
-                dispatch(deleteBag({ product: item, token: Cookies.get('modnikky_token') }));
-              }}>
+              <span
+                onClick={() => {
+                  dispatch(deleteBag({ product: item, token: Cookies.get('modnikky_token') }));
+                }}
+              >
                 <img src={remove_icon} /> <p>REMOVE</p>
               </span>
-              <hr />
             </div>
           ))}
         </div>
         <span>
           <p>
             USD{' '}
-            {data.reduce(function (sum, elem) {
+            {data&&data.reduce(function (sum, elem) {
               return sum + Number(elem.price.value);
             }, 0)}
           </p>
-          <button
-            onClick={() => {
-              sendProducts();
-            }}
-          >
-            PROCED TO CHECKOUT
-          </button>
+          <button>PROCED TO CHECKOUT</button>
           <div>
             <img src={maestro_logo} />
             <img src={visa_logo} />
@@ -76,7 +70,6 @@ const Bag = () => {
         <Footer />
       </div>
     )
-  );
 };
 
 export default Bag;

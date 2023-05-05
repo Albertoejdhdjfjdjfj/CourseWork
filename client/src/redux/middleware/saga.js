@@ -1,5 +1,12 @@
 import { takeEvery, call, put, all } from 'redux-saga/effects';
-import { FETCH_LIKED, DELETE_LIKED, ADD_LIKED , FETCH_BAG, DELETE_BAG, ADD_BAG } from '../actions/actionsTypes';
+import {
+  FETCH_LIKED,
+  DELETE_LIKED,
+  ADD_LIKED,
+  FETCH_BAG,
+  DELETE_BAG,
+  ADD_BAG
+} from '../actions/actionsTypes';
 import {
   removeLiked,
   pushLiked,
@@ -11,7 +18,14 @@ import {
 import { host } from '../../assets/constans/config';
 
 export function* rootSaga() {
-  yield all([watchRequestLiked(), watchDeleteLiked(), watchAddLiked(),watchRequestBag(), watchDeleteBag(), watchAddBag()]);
+  yield all([
+    watchRequestLiked(),
+    watchDeleteLiked(),
+    watchAddLiked(),
+    watchRequestBag(),
+    watchDeleteBag(),
+    watchAddBag()
+  ]);
 }
 
 function* watchRequestLiked() {
@@ -103,22 +117,7 @@ function* fetchBagData(action) {
 }
 
 function* deleteBag(action) {
-  yield  fetch(host + 'products/bag/delete', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${action.payload.token}`
-    },
-    body: JSON.stringify({
-      id: action.payload.product._id
-    })
-  })
-
-  yield call(fetchBagData,{payload:action.payload.token});
-}
-
-function* addBag(action) {
-  yield fetch(host + 'products/bag', {
+  yield fetch(host + 'products/bag/delete', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -129,5 +128,21 @@ function* addBag(action) {
     })
   });
 
-  yield call(fetchBagData,{payload:action.payload.token});
+  yield call(fetchBagData, { payload: action.payload.token });
+}
+
+function* addBag(action) {
+  yield fetch(host + 'products/bag', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${action.payload.token}`
+    },
+    body: JSON.stringify({
+      id: action.payload.product._id,
+      size: action.payload.size,
+    })
+  });
+
+  yield call(fetchBagData, { payload: action.payload.token });
 }

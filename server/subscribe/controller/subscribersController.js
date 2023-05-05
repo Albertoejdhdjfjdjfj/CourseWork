@@ -19,7 +19,7 @@ class subscribersController {
     const mailOptions = {
       from: secretEmail.email,
       to: email,
-      subject: 'Registration to modnikky_shop', 
+      subject: 'modnikky_shop', 
       text: 'Thank you for choosing us!'
     };
     

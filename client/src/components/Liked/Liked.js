@@ -24,13 +24,12 @@ const Liked = () => {
   }, [data]);
 
   return (
-    data && (
       <div className="liked">
         <Header />
-        <p>LIKED {data.length}</p>
         <div className="products">
-          {data.map((item, index) => (
+          {data&&data.map((item, index) => (
             <div key={index}>
+              <hr/>
               <div onClick={() => navigate(`/product/${item._id}`)}>
                 <img src={item.images[0]} />
                 <div>
@@ -49,14 +48,12 @@ const Liked = () => {
               >
                 <img src={remove_icon} /> <p>REMOVE</p>
               </span>
-              <hr />
             </div>
           ))}
         </div>
         <Footer />
       </div>
     )
-  );
 };
 
 export default Liked;

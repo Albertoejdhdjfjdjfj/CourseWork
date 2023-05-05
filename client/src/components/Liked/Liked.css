@@ -19,12 +19,6 @@
   align-items: center;
 }
 
-.liked > p {
-  margin-top: calc(56 * 100vw / var(--width_before_breakpoint));
-  width: calc(1056 * 100vw / var(--width_before_breakpoint));
-  text-align: start;
-}
-
 .liked > span {
   margin-top: calc(80 * 100vw / var(--width_before_breakpoint));
   width: 100%;
@@ -139,12 +133,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-
-  .liked > p {
-    margin-top: calc(60 * 100vw / var(--width_after_breakpoint));
-    width: calc(810 * 100vw / var(--width_after_breakpoint));
-    text-align: start;
   }
 
   .liked > span {

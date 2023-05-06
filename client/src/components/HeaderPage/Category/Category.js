@@ -44,13 +44,11 @@ const Category = () => {
   }, [category]);
 
   return (
-    category &&
-    data && (
+    category && (
       <div className="category">
         <h3>{category}</h3>
-
         <div>
-          {data.map((item) => (
+          {data&&data.map((item) => (
             <div key={item._id}>
               <span
                 onClick={() =>
@@ -73,6 +71,8 @@ const Category = () => {
 
         {nextArr.length !== 0 && <p onClick={() => fetchCategory(category, 4)}>Show more</p>}
       </div>
+
+
     )
   );
 };

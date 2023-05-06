@@ -104,7 +104,7 @@
   margin-right: calc(42 * 100vw / var(--width_before_breakpoint));
 }
 
-.activeSize{
+.activeSize {
   border-bottom: 1px solid black;
 }
 
@@ -273,7 +273,7 @@
     margin-right: calc(49 * 100vw / var(--width_before_breakpoint));
   }
 
-  .activeSize{
+  .activeSize {
     border-bottom: 1px solid black;
   }
 

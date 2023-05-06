@@ -19,7 +19,7 @@ const initialState = {
     category: undefined,
     search: '',
     searchDisplay: false
-  },
+  }, 
   products: {
     liked: [],
     bag: []
@@ -53,7 +53,7 @@ export default function reducer(state = initialState, action) {
     case PUSH_LIKED:
       return {
         ...state,
-        products: { ...state.products, liked: [...state.products.liked, action.payload] }
+        products: { ...state.products, liked: state.products.liked?[...state.products.liked, action.payload] : [action.payload]}
       };
     case REMOVE_LIKED:
       return {

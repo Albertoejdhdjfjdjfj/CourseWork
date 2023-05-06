@@ -14,7 +14,7 @@ import './Product.css';
 
 const Product = memo(() => {
   const [product, setProduct] = useState(false);
-  const [size,setSize]=useState()
+  const [size, setSize] = useState();
   const { id } = useParams();
   const [descActive, setDescActive] = useState(false);
   const [shippAndReturnActive, setShippAndReturnActive] = useState(false);
@@ -27,15 +27,18 @@ const Product = memo(() => {
     const fetchProduct = async () => {
       await fetch(host + `products/id?id=${id}`)
         .then((res) => res.json())
-        .then((data) => {setProduct(data),setSize(data.availableSizes[0].split(",")[0 ])});
+        .then((data) => {
+          setProduct(data), setSize(data.availableSizes[0].split(',')[0]);
+        });
     };
     fetchProduct();
   }, []);
 
   return (
-      <div className="product">
-        <Header />
-        {product &&<div className="about_product">
+    <div className="product">
+      <Header />
+      {product && (
+        <div className="about_product">
           <span>
             <img src={product.images[0]} />
             <img src={product.images[1]} />
@@ -56,17 +59,24 @@ const Product = memo(() => {
               <div className="size">
                 <p>SIZE</p>
                 <div>
-                  {product.availableSizes[0].split(",").map((element)=>
-                    <p key={element} onClick={()=>setSize(element)} className={size===element? "activeSize":""}>{element}</p>
-                  )
-                  }
+                  {product.availableSizes[0].split(',').map((element) => (
+                    <p
+                      key={element}
+                      onClick={() => setSize(element)}
+                      className={size === element ? 'activeSize' : ''}
+                    >
+                      {element}
+                    </p>
+                  ))}
                 </div>
               </div>
 
               <button>
                 <p
                   onClick={() =>
-                    dispatch(addBag({ product: product,size:size, token: Cookies.get('modnikky_token') }))
+                    dispatch(
+                      addBag({ product: product, size: size, token: Cookies.get('modnikky_token') })
+                    )
                   }
                 >
                   ADD TO BAG
@@ -82,7 +92,6 @@ const Product = memo(() => {
                         )
                   }
                 >
-                  
                   <img
                     src={
                       likedData && likedData.some((el) => el._id === product._id)
@@ -118,10 +127,10 @@ const Product = memo(() => {
             </div>
           </div>
         </div>
-}
-        <Footer />
-      </div>
-    )
+      )}
+      <Footer />
+    </div>
+  );
 });
 
 export default Product;

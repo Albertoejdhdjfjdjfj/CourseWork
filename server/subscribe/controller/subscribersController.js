@@ -24,17 +24,16 @@ class subscribersController {
     };
     
     try {
+      await transporter.sendMail(mailOptions);
       const subscriber=await Subscriber.findOne({email})
       if(!subscriber){
         const user=new Subscriber({email: email })
         await user.save()
       }
-      const info = await transporter.sendMail(mailOptions);
-      console.log('Email sent: ' + info.response);
       res.status(200).json('Email sent successfully');
     } catch (error) {
       console.log(error);
-      res.status(500).send('Error sending email');
+      res.status(500).json('Error sending email');
     }
   }
   

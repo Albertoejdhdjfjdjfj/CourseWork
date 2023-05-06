@@ -26,13 +26,14 @@ const Bag = () => {
   }, [data]);
 
   return (
-      <div className="bag">
-        <Header />
-        <p>BAG {data&&data.length}</p>
-        <div className="products">
-          {data&&data.map((item, index) => (
+    <div className="bag">
+      <Header />
+      <p>BAG {data && data.length}</p>
+      <div className="products">
+        {data &&
+          data.map((item, index) => (
             <div key={index}>
-              <hr/>
+              <hr />
               <div onClick={() => navigate(`/product/${item._id}`)}>
                 <img src={item.images[0]} />
                 <div>
@@ -53,23 +54,24 @@ const Bag = () => {
               </span>
             </div>
           ))}
-        </div>
-        <span>
-          <p>
-            USD{' '}
-            {data&&data.reduce(function (sum, elem) {
+      </div>
+      <span>
+        <p>
+          USD{' '}
+          {data &&
+            data.reduce(function (sum, elem) {
               return sum + Number(elem.price.value);
             }, 0)}
-          </p>
-          <button>PROCED TO CHECKOUT</button>
-          <div>
-            <img src={maestro_logo} />
-            <img src={visa_logo} />
-          </div>
-        </span>
-        <Footer />
-      </div>
-    )
+        </p>
+        <button>PROCED TO CHECKOUT</button>
+        <div>
+          <img src={maestro_logo} />
+          <img src={visa_logo} />
+        </div>
+      </span>
+      <Footer />
+    </div>
+  );
 };
 
 export default Bag;

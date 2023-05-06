@@ -72,6 +72,7 @@ function* fetchLikedData(action) {
 
 function* deleteLiked(action) {
   yield put(removeLiked(action.payload.product));
+  if(action.payload.token){
   yield fetch(host + 'products/liked/delete', {
     method: 'POST',
     headers: {
@@ -83,9 +84,11 @@ function* deleteLiked(action) {
     })
   });
 }
-
+}
+ 
 function* addLiked(action) {
   yield put(pushLiked(action.payload.product));
+  if(action.payload.token){
   yield fetch(host + 'products/liked', {
     method: 'POST',
     headers: {
@@ -96,6 +99,7 @@ function* addLiked(action) {
       id: action.payload.product._id
     })
   });
+}
 }
 
 function* fetchBagData(action) {
@@ -140,7 +144,7 @@ function* addBag(action) {
     },
     body: JSON.stringify({
       id: action.payload.product._id,
-      size: action.payload.size,
+      size: action.payload.size
     })
   });
 

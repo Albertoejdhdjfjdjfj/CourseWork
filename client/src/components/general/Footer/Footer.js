@@ -26,6 +26,9 @@ const Footer = () => {
       })
     });
 
+    // if(message.status===500){
+    // return setMessage(await message.json());
+    // }
     return setMessage(await message.json());
   };
 

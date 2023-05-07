@@ -5,7 +5,7 @@ import {
   ADD_LIKED,
   FETCH_BAG,
   DELETE_BAG,
-  ADD_BAG
+  ADD_BAG 
 } from '../actions/actionsTypes';
 import {
   removeLiked,

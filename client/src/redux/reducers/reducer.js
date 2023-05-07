@@ -10,8 +10,6 @@ import {
   REQUEST_BAG,
   REQUEST_BAG_SUCCESS,
   REQUEST_BAG_ERROR,
-  PUSH_BAG,
-  REMOVE_BAG
 } from '../actions/actionsTypes';
 
 const initialState = {
@@ -67,7 +65,7 @@ export default function reducer(state = initialState, action) {
     //================================================================================
 
     case REQUEST_BAG_SUCCESS:
-      return {
+      return { 
         ...state,
         products: { ...state.products, bag: action.payload }
       };

@@ -75,6 +75,10 @@
   justify-content: flex-end;
 }
 
+.products > div > span:hover{
+  opacity: 0.5;
+}
+
 .products > div > span > img {
   width: calc(24 * 100vw / var(--width_before_breakpoint));
   height: calc(24 * 100vw / var(--width_before_breakpoint));

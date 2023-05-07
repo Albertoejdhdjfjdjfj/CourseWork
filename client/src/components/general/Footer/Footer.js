@@ -16,6 +16,7 @@ const Footer = () => {
   const [message, setMessage] = useState(false);
 
   const followToNews = async () => {
+    setMessage('Loading...');
     const message = await fetch(host + 'subscribe', {
       method: 'POST',
       headers: {
@@ -26,10 +27,8 @@ const Footer = () => {
       })
     });
 
-    // if(message.status===500){
-    // return setMessage(await message.json());
-    // }
-    return setMessage(await message.json());
+    setMessage(await message.json());
+    return  setTimeout(()=>{setMessage(false)},2000);
   };
 
   return (

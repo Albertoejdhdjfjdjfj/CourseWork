@@ -10,7 +10,7 @@ const generateAccesToken=(id)=>{
 }
 
 class authController{
-     async registation(req,res){
+     async registation(req,res){ 
        try{
              const errors=validationResult(req)
              if(!errors.isEmpty()){

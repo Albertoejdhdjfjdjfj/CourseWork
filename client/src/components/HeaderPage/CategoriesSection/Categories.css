@@ -39,7 +39,7 @@
   height: calc(180 * 100vw / var(--width_before_breakpoint));
   display: flex;
   justify-content: space-between;
-}
+} 
 
 .categories > div > div {
   width: calc(391 * 100vw / var(--width_before_breakpoint));
@@ -57,6 +57,10 @@
 .categories > div > div > p {
   font-size: calc(48 * 100vw / var(--width_before_breakpoint));
   margin-left: calc(36 * 100vw / var(--width_before_breakpoint));
+}
+
+.activeCategory{
+  opacity: 0.5;
 }
 
 @media screen and (max-width: 850px) {

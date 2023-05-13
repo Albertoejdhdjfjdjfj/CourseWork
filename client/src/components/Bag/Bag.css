@@ -81,7 +81,7 @@
   justify-content: flex-end;
 }
 
-.products > div > span:hover{
+.products > div > span:hover {
   opacity: 0.5;
 }
 

@@ -19,15 +19,15 @@ app.use("/subscribe",subscribersRouter)
 
 const start=async()=>{
      try{
-          mongoose.connect('mongodb+srv://albert:albert26102003@cluster0.3pvs9xw.mongodb.net/?retryWrites=true&w=majority').then(() => {
+          mongoose.connect('mongodb+srv://albert:albert26102003@cluster1.ecre7jl.mongodb.net/?retryWrites=true&w=majority').then(() => {
           console.log('Connected to MongoDB');
 }).catch((err) => {
   console.error('Error connecting to MongoDB', err);
 });
           app.listen(PORT,()=>console.log(`server started on port ${PORT}`))
      }
-     catch(e){
-          console.log(e) 
+     catch(e){  
+          console.log(e)  
      }
 
 }

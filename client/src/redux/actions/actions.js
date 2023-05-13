@@ -48,7 +48,7 @@ export const requestLikedError = createAction(REQUEST_LIKED_ERROR);
 
 export const addBag = createAction(ADD_BAG);
 
-export const deleteBag = createAction(DELETE_BAG); 
+export const deleteBag = createAction(DELETE_BAG);
 
 export const fetchBag = createAction(FETCH_BAG);
 

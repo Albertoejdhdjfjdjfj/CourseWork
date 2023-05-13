@@ -28,7 +28,9 @@ const Footer = () => {
     });
 
     setMessage(await message.json());
-    return  setTimeout(()=>{setMessage(false)},2000);
+    return setTimeout(() => {
+      setMessage(false);
+    }, 2000);
   };
 
   return (

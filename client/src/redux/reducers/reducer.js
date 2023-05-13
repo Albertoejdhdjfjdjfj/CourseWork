@@ -2,14 +2,12 @@ import {
   SET_SHOP_CATEGORY,
   SET_SEARCH_TEXT,
   SET_SEARCH_DISPLAY,
-  REQUEST_LIKED,
   REQUEST_LIKED_SUCCESS,
   REQUEST_LIKED_ERROR,
   PUSH_LIKED,
   REMOVE_LIKED,
-  REQUEST_BAG,
   REQUEST_BAG_SUCCESS,
-  REQUEST_BAG_ERROR,
+  REQUEST_BAG_ERROR
 } from '../actions/actionsTypes';
 
 const initialState = {
@@ -17,7 +15,7 @@ const initialState = {
     category: undefined,
     search: '',
     searchDisplay: false
-  }, 
+  },
   products: {
     liked: [],
     bag: []
@@ -51,7 +49,10 @@ export default function reducer(state = initialState, action) {
     case PUSH_LIKED:
       return {
         ...state,
-        products: { ...state.products, liked: state.products.liked?[...state.products.liked, action.payload] : [action.payload]}
+        products: {
+          ...state.products,
+          liked: state.products.liked ? [...state.products.liked, action.payload] : [action.payload]
+        }
       };
     case REMOVE_LIKED:
       return {
@@ -65,7 +66,7 @@ export default function reducer(state = initialState, action) {
     //================================================================================
 
     case REQUEST_BAG_SUCCESS:
-      return { 
+      return {
         ...state,
         products: { ...state.products, bag: action.payload }
       };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useState, useEffect, useMemo } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { addLiked, deleteLiked } from '../../../redux/actions/actions';
 import { host } from '../../../assets/constans/config';
 import Cookies from 'js-cookie';
@@ -48,31 +48,34 @@ const Category = () => {
       <div className="category">
         <h3>{category}</h3>
         <div>
-          {data&&data.map((item) => (
-            <div key={item._id}>
-              <span
-                onClick={() =>
-                  likedData && likedData.some((el) => el._id === item._id)
-                    ? dispatch(deleteLiked({ product: item, token: Cookies.get('modnikky_token') }))
-                    : dispatch(addLiked({ product: item, token: Cookies.get('modnikky_token') }))
-                }
-              >
-                <img
-                  src={likedData && likedData.some((el) => el._id === item._id) ? likeHeart : heart}
-                />
-              </span>
-              <img src={item.images[0]} onClick={() => navigate(`/product/${item._id}`)} />
-              <p>${item.price.value}</p>
-            </div>
-          ))}
+          {data &&
+            data.map((item) => (
+              <div key={item._id}>
+                <span
+                  onClick={() =>
+                    likedData && likedData.some((el) => el._id === item._id)
+                      ? dispatch(
+                          deleteLiked({ product: item, token: Cookies.get('modnikky_token') })
+                        )
+                      : dispatch(addLiked({ product: item, token: Cookies.get('modnikky_token') }))
+                  }
+                >
+                  <img
+                    src={
+                      likedData && likedData.some((el) => el._id === item._id) ? likeHeart : heart
+                    }
+                  />
+                </span>
+                <img src={item.images[0]} onClick={() => navigate(`/product/${item._id}`)} />
+                <p>${item.price.value}</p>
+              </div>
+            ))}
 
           {data.length == 0 && <p>No beauty products found</p>}
         </div>
 
         {nextArr.length !== 0 && <p onClick={() => fetchCategory(category, 4)}>Show more</p>}
       </div>
-
-
     )
   );
 };

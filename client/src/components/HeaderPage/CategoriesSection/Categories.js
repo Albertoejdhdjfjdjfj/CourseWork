@@ -9,7 +9,7 @@ import tops from '../../../assets/images/tops.svg';
 import beauty from '../../../assets/images/beauty.svg';
 import './Categories.css';
 
-const Categories = () => { 
+const Categories = () => {
   const dispatch = useDispatch();
   const category = useSelector((state) => state.headerPage.category);
 
@@ -27,27 +27,45 @@ const Categories = () => {
         Shop by the <p>Category</p>
       </h2>
       <div>
-        <div style={{backgroundColor: category==='Dresses'?'rgb(194, 194, 194)':''}}onClick={() => handleChangeStateBtns('Dresses')}>
+        <div
+          className={ category === 'Dresses' ? 'activeCategory' : ''}
+          onClick={() => handleChangeStateBtns('Dresses')}
+        >
           <img src={dress} />
           <p>Dresses</p>
         </div>
-        <div style={{ backgroundColor: category==='Tees'?'rgb(194, 194, 194)':''}}onClick={() => handleChangeStateBtns('Tees')}>
+        <div
+          className={ category === 'Tees' ? 'activeCategory' : ''}
+          onClick={() => handleChangeStateBtns('Tees')}
+        >
           <img src={tees} />
           <p>Tees</p>
         </div>
-        <div style={{ backgroundColor: category==='Swimwear'?'rgb(194, 194, 194)':''}}onClick={() => handleChangeStateBtns('Swimwear')}>
+        <div
+          className={ category === 'Swimwear' ? 'activeCategory' : ''}
+          onClick={() => handleChangeStateBtns('Swimwear')}
+        >
           <img src={swimwear} />
           <p>Swimwear</p>
         </div>
-        <div style={{ backgroundColor: category==='Denim'?'rgb(194, 194, 194)':''}}onClick={() => handleChangeStateBtns('Denim')}>
+        <div
+          className={ category === 'Denim' ? 'activeCategory' : ''}
+          onClick={() => handleChangeStateBtns('Denim')}
+        >
           <img src={denim} />
           <p>Denim</p>
         </div>
-        <div style={{ backgroundColor: category==='Tops'?'rgb(194, 194, 194)':''}}onClick={() => handleChangeStateBtns('Tops')}>
+        <div
+          className={ category === 'Tops' ? 'activeCategory' : ''}
+          onClick={() => handleChangeStateBtns('Tops')}
+        >
           <img src={tops} />
           <p>Tops</p>
         </div>
-        <div style={{ backgroundColor: category==='Beauty'?'rgb(194, 194, 194)':''}}onClick={() => handleChangeStateBtns('Beauty')}>
+        <div
+          className={ category === 'Beauty' ? 'activeCategory' : ''}
+          onClick={() => handleChangeStateBtns('Beauty')}
+        >
           <img src={beauty} />
           <p>Beauty</p>
         </div>

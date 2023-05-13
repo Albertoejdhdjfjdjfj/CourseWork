@@ -14,7 +14,7 @@ const Bag = () => {
   const data = useSelector((state) => state.products.bag);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  
   useEffect(() => {
     dispatch(fetchBag(Cookies.get('modnikky_token')));
   }, []);

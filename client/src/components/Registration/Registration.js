@@ -54,7 +54,7 @@ const Registration = () => {
   return (
     <div className="registration">
       <h2>
-        CREATE ACCOUNT <img onClick={()=>navigate('/login')} src={remove_icon} />
+        CREATE ACCOUNT <img onClick={() => navigate('/login')} src={remove_icon} />
       </h2>
       <div>
         <input

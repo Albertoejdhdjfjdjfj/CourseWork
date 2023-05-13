@@ -1,7 +1,5 @@
-import React, { useEffect } from 'react';
-import { fetchProducts } from './redux/actions/actions';
-import { Navigate, Route, Routes } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
 import HeaderPage from './components/HeaderPage/HeaderPage';
 import Login from './components/Login/Login';
 import Registration from './components/Registration/Registration';

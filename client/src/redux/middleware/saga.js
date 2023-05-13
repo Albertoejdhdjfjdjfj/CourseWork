@@ -5,7 +5,7 @@ import {
   ADD_LIKED,
   FETCH_BAG,
   DELETE_BAG,
-  ADD_BAG 
+  ADD_BAG
 } from '../actions/actionsTypes';
 import {
   removeLiked,
@@ -72,34 +72,34 @@ function* fetchLikedData(action) {
 
 function* deleteLiked(action) {
   yield put(removeLiked(action.payload.product));
-  if(action.payload.token){
-  yield fetch(host + 'products/liked/delete', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${action.payload.token}`
-    },
-    body: JSON.stringify({
-      id: action.payload.product._id
-    })
-  });
+  if (action.payload.token) {
+    yield fetch(host + 'products/liked/delete', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${action.payload.token}`
+      },
+      body: JSON.stringify({
+        id: action.payload.product._id
+      })
+    });
+  }
 }
-}
- 
+
 function* addLiked(action) {
   yield put(pushLiked(action.payload.product));
-  if(action.payload.token){
-  yield fetch(host + 'products/liked', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${action.payload.token}`
-    },
-    body: JSON.stringify({
-      id: action.payload.product._id
-    })
-  });
-}
+  if (action.payload.token) {
+    yield fetch(host + 'products/liked', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${action.payload.token}`
+      },
+      body: JSON.stringify({
+        id: action.payload.product._id
+      })
+    });
+  }
 }
 
 function* fetchBagData(action) {

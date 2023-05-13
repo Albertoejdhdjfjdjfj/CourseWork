@@ -10,7 +10,6 @@ const Login = () => {
   const [password, setPassword] = useState('1234');
   const [error, setError] = useState('');
 
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const login = async () => {
